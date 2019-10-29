@@ -1,0 +1,602 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		607937712368EEA600B1E49B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607937702368EEA600B1E49B /* AppDelegate.swift */; };
+		607937732368EEA600B1E49B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607937722368EEA600B1E49B /* ViewController.swift */; };
+		607937762368EEA600B1E49B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607937742368EEA600B1E49B /* Main.storyboard */; };
+		607937792368EEA600B1E49B /* Alohomora.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 607937772368EEA600B1E49B /* Alohomora.xcdatamodeld */; };
+		6079377B2368EEA800B1E49B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6079377A2368EEA800B1E49B /* Assets.xcassets */; };
+		6079377E2368EEA800B1E49B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6079377C2368EEA800B1E49B /* LaunchScreen.storyboard */; };
+		607937892368EEA800B1E49B /* AlohomoraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607937882368EEA800B1E49B /* AlohomoraTests.swift */; };
+		607937942368EEA800B1E49B /* AlohomoraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607937932368EEA800B1E49B /* AlohomoraUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		607937852368EEA800B1E49B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 607937652368EEA600B1E49B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6079376C2368EEA600B1E49B;
+			remoteInfo = Alohomora;
+		};
+		607937902368EEA800B1E49B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 607937652368EEA600B1E49B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6079376C2368EEA600B1E49B;
+			remoteInfo = Alohomora;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6079376D2368EEA600B1E49B /* Alohomora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alohomora.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		607937702368EEA600B1E49B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		607937722368EEA600B1E49B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		607937752368EEA600B1E49B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		607937782368EEA600B1E49B /* Alohomora.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Alohomora.xcdatamodel; sourceTree = "<group>"; };
+		6079377A2368EEA800B1E49B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6079377D2368EEA800B1E49B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6079377F2368EEA800B1E49B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		607937842368EEA800B1E49B /* AlohomoraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlohomoraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		607937882368EEA800B1E49B /* AlohomoraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlohomoraTests.swift; sourceTree = "<group>"; };
+		6079378A2368EEA800B1E49B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6079378F2368EEA800B1E49B /* AlohomoraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlohomoraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		607937932368EEA800B1E49B /* AlohomoraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlohomoraUITests.swift; sourceTree = "<group>"; };
+		607937952368EEA800B1E49B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6079376A2368EEA600B1E49B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		607937812368EEA800B1E49B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6079378C2368EEA800B1E49B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		607937642368EEA600B1E49B = {
+			isa = PBXGroup;
+			children = (
+				6079376F2368EEA600B1E49B /* Alohomora */,
+				607937872368EEA800B1E49B /* AlohomoraTests */,
+				607937922368EEA800B1E49B /* AlohomoraUITests */,
+				6079376E2368EEA600B1E49B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6079376E2368EEA600B1E49B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6079376D2368EEA600B1E49B /* Alohomora.app */,
+				607937842368EEA800B1E49B /* AlohomoraTests.xctest */,
+				6079378F2368EEA800B1E49B /* AlohomoraUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6079376F2368EEA600B1E49B /* Alohomora */ = {
+			isa = PBXGroup;
+			children = (
+				607937702368EEA600B1E49B /* AppDelegate.swift */,
+				607937722368EEA600B1E49B /* ViewController.swift */,
+				607937742368EEA600B1E49B /* Main.storyboard */,
+				6079377A2368EEA800B1E49B /* Assets.xcassets */,
+				6079377C2368EEA800B1E49B /* LaunchScreen.storyboard */,
+				6079377F2368EEA800B1E49B /* Info.plist */,
+				607937772368EEA600B1E49B /* Alohomora.xcdatamodeld */,
+			);
+			path = Alohomora;
+			sourceTree = "<group>";
+		};
+		607937872368EEA800B1E49B /* AlohomoraTests */ = {
+			isa = PBXGroup;
+			children = (
+				607937882368EEA800B1E49B /* AlohomoraTests.swift */,
+				6079378A2368EEA800B1E49B /* Info.plist */,
+			);
+			path = AlohomoraTests;
+			sourceTree = "<group>";
+		};
+		607937922368EEA800B1E49B /* AlohomoraUITests */ = {
+			isa = PBXGroup;
+			children = (
+				607937932368EEA800B1E49B /* AlohomoraUITests.swift */,
+				607937952368EEA800B1E49B /* Info.plist */,
+			);
+			path = AlohomoraUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6079376C2368EEA600B1E49B /* Alohomora */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 607937982368EEA800B1E49B /* Build configuration list for PBXNativeTarget "Alohomora" */;
+			buildPhases = (
+				607937692368EEA600B1E49B /* Sources */,
+				6079376A2368EEA600B1E49B /* Frameworks */,
+				6079376B2368EEA600B1E49B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Alohomora;
+			productName = Alohomora;
+			productReference = 6079376D2368EEA600B1E49B /* Alohomora.app */;
+			productType = "com.apple.product-type.application";
+		};
+		607937832368EEA800B1E49B /* AlohomoraTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6079379B2368EEA800B1E49B /* Build configuration list for PBXNativeTarget "AlohomoraTests" */;
+			buildPhases = (
+				607937802368EEA800B1E49B /* Sources */,
+				607937812368EEA800B1E49B /* Frameworks */,
+				607937822368EEA800B1E49B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				607937862368EEA800B1E49B /* PBXTargetDependency */,
+			);
+			name = AlohomoraTests;
+			productName = AlohomoraTests;
+			productReference = 607937842368EEA800B1E49B /* AlohomoraTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6079378E2368EEA800B1E49B /* AlohomoraUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6079379E2368EEA800B1E49B /* Build configuration list for PBXNativeTarget "AlohomoraUITests" */;
+			buildPhases = (
+				6079378B2368EEA800B1E49B /* Sources */,
+				6079378C2368EEA800B1E49B /* Frameworks */,
+				6079378D2368EEA800B1E49B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				607937912368EEA800B1E49B /* PBXTargetDependency */,
+			);
+			name = AlohomoraUITests;
+			productName = AlohomoraUITests;
+			productReference = 6079378F2368EEA800B1E49B /* AlohomoraUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		607937652368EEA600B1E49B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Poornima Sivakumar";
+				TargetAttributes = {
+					6079376C2368EEA600B1E49B = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					607937832368EEA800B1E49B = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 6079376C2368EEA600B1E49B;
+					};
+					6079378E2368EEA800B1E49B = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 6079376C2368EEA600B1E49B;
+					};
+				};
+			};
+			buildConfigurationList = 607937682368EEA600B1E49B /* Build configuration list for PBXProject "Alohomora" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 607937642368EEA600B1E49B;
+			productRefGroup = 6079376E2368EEA600B1E49B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6079376C2368EEA600B1E49B /* Alohomora */,
+				607937832368EEA800B1E49B /* AlohomoraTests */,
+				6079378E2368EEA800B1E49B /* AlohomoraUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6079376B2368EEA600B1E49B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6079377E2368EEA800B1E49B /* LaunchScreen.storyboard in Resources */,
+				6079377B2368EEA800B1E49B /* Assets.xcassets in Resources */,
+				607937762368EEA600B1E49B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		607937822368EEA800B1E49B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6079378D2368EEA800B1E49B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		607937692368EEA600B1E49B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				607937732368EEA600B1E49B /* ViewController.swift in Sources */,
+				607937712368EEA600B1E49B /* AppDelegate.swift in Sources */,
+				607937792368EEA600B1E49B /* Alohomora.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		607937802368EEA800B1E49B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				607937892368EEA800B1E49B /* AlohomoraTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6079378B2368EEA800B1E49B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				607937942368EEA800B1E49B /* AlohomoraUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		607937862368EEA800B1E49B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6079376C2368EEA600B1E49B /* Alohomora */;
+			targetProxy = 607937852368EEA800B1E49B /* PBXContainerItemProxy */;
+		};
+		607937912368EEA800B1E49B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6079376C2368EEA600B1E49B /* Alohomora */;
+			targetProxy = 607937902368EEA800B1E49B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		607937742368EEA600B1E49B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				607937752368EEA600B1E49B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6079377C2368EEA800B1E49B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6079377D2368EEA800B1E49B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		607937962368EEA800B1E49B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		607937972368EEA800B1E49B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		607937992368EEA800B1E49B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Alohomora/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = poornimasivakumar.Alohomora;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6079379A2368EEA800B1E49B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Alohomora/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = poornimasivakumar.Alohomora;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6079379C2368EEA800B1E49B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AlohomoraTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = poornimasivakumar.AlohomoraTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Alohomora.app/Alohomora";
+			};
+			name = Debug;
+		};
+		6079379D2368EEA800B1E49B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AlohomoraTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = poornimasivakumar.AlohomoraTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Alohomora.app/Alohomora";
+			};
+			name = Release;
+		};
+		6079379F2368EEA800B1E49B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AlohomoraUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = poornimasivakumar.AlohomoraUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Alohomora;
+			};
+			name = Debug;
+		};
+		607937A02368EEA800B1E49B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AlohomoraUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = poornimasivakumar.AlohomoraUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Alohomora;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		607937682368EEA600B1E49B /* Build configuration list for PBXProject "Alohomora" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				607937962368EEA800B1E49B /* Debug */,
+				607937972368EEA800B1E49B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		607937982368EEA800B1E49B /* Build configuration list for PBXNativeTarget "Alohomora" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				607937992368EEA800B1E49B /* Debug */,
+				6079379A2368EEA800B1E49B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6079379B2368EEA800B1E49B /* Build configuration list for PBXNativeTarget "AlohomoraTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6079379C2368EEA800B1E49B /* Debug */,
+				6079379D2368EEA800B1E49B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6079379E2368EEA800B1E49B /* Build configuration list for PBXNativeTarget "AlohomoraUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6079379F2368EEA800B1E49B /* Debug */,
+				607937A02368EEA800B1E49B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		607937772368EEA600B1E49B /* Alohomora.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				607937782368EEA600B1E49B /* Alohomora.xcdatamodel */,
+			);
+			currentVersion = 607937782368EEA600B1E49B /* Alohomora.xcdatamodel */;
+			path = Alohomora.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 607937652368EEA600B1E49B /* Project object */;
+}
