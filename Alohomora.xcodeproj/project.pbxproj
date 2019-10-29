@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3EC1F358F25A15C24D3ACE51 /* Pods_Alohomora_AlohomoraUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E36F1015AD61F463FDD5BCDE /* Pods_Alohomora_AlohomoraUITests.framework */; };
 		607937712368EEA600B1E49B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607937702368EEA600B1E49B /* AppDelegate.swift */; };
 		607937732368EEA600B1E49B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607937722368EEA600B1E49B /* ViewController.swift */; };
 		607937762368EEA600B1E49B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607937742368EEA600B1E49B /* Main.storyboard */; };
@@ -15,6 +16,8 @@
 		6079377E2368EEA800B1E49B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6079377C2368EEA800B1E49B /* LaunchScreen.storyboard */; };
 		607937892368EEA800B1E49B /* AlohomoraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607937882368EEA800B1E49B /* AlohomoraTests.swift */; };
 		607937942368EEA800B1E49B /* AlohomoraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607937932368EEA800B1E49B /* AlohomoraUITests.swift */; };
+		97540F2941DBD40F485BCDA3 /* Pods_Alohomora.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C66636572912CB2593D508D6 /* Pods_Alohomora.framework */; };
+		F5A560E07B6DB5C2303AF9EA /* Pods_AlohomoraTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E92C635E4ED8B6B95E365E05 /* Pods_AlohomoraTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		036F670235ADD17842278F3F /* Pods-Alohomora.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alohomora.debug.xcconfig"; path = "Target Support Files/Pods-Alohomora/Pods-Alohomora.debug.xcconfig"; sourceTree = "<group>"; };
+		1A01365DF5E8C98ACF7C2226 /* Pods-Alohomora-AlohomoraUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alohomora-AlohomoraUITests.release.xcconfig"; path = "Target Support Files/Pods-Alohomora-AlohomoraUITests/Pods-Alohomora-AlohomoraUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6079376D2368EEA600B1E49B /* Alohomora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alohomora.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607937702368EEA600B1E49B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		607937722368EEA600B1E49B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +54,13 @@
 		6079378F2368EEA800B1E49B /* AlohomoraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlohomoraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607937932368EEA800B1E49B /* AlohomoraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlohomoraUITests.swift; sourceTree = "<group>"; };
 		607937952368EEA800B1E49B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0BE9245CAE53423E078B365 /* Pods-AlohomoraTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlohomoraTests.release.xcconfig"; path = "Target Support Files/Pods-AlohomoraTests/Pods-AlohomoraTests.release.xcconfig"; sourceTree = "<group>"; };
+		C6269A45EBA881C4B74B9457 /* Pods-Alohomora-AlohomoraUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alohomora-AlohomoraUITests.debug.xcconfig"; path = "Target Support Files/Pods-Alohomora-AlohomoraUITests/Pods-Alohomora-AlohomoraUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C66636572912CB2593D508D6 /* Pods_Alohomora.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alohomora.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4875778343A510F53E79556 /* Pods-Alohomora.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alohomora.release.xcconfig"; path = "Target Support Files/Pods-Alohomora/Pods-Alohomora.release.xcconfig"; sourceTree = "<group>"; };
+		E36F1015AD61F463FDD5BCDE /* Pods_Alohomora_AlohomoraUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alohomora_AlohomoraUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E92C635E4ED8B6B95E365E05 /* Pods_AlohomoraTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlohomoraTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA404D9584F60E535DA83AC1 /* Pods-AlohomoraTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlohomoraTests.debug.xcconfig"; path = "Target Support Files/Pods-AlohomoraTests/Pods-AlohomoraTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97540F2941DBD40F485BCDA3 /* Pods_Alohomora.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5A560E07B6DB5C2303AF9EA /* Pods_AlohomoraTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +84,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EC1F358F25A15C24D3ACE51 /* Pods_Alohomora_AlohomoraUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F7D22649C0B0F06F3A496B6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C66636572912CB2593D508D6 /* Pods_Alohomora.framework */,
+				E36F1015AD61F463FDD5BCDE /* Pods_Alohomora_AlohomoraUITests.framework */,
+				E92C635E4ED8B6B95E365E05 /* Pods_AlohomoraTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		607937642368EEA600B1E49B = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +108,8 @@
 				607937872368EEA800B1E49B /* AlohomoraTests */,
 				607937922368EEA800B1E49B /* AlohomoraUITests */,
 				6079376E2368EEA600B1E49B /* Products */,
+				9563B1CF439764308DE57BC5 /* Pods */,
+				0F7D22649C0B0F06F3A496B6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +155,20 @@
 			path = AlohomoraUITests;
 			sourceTree = "<group>";
 		};
+		9563B1CF439764308DE57BC5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				036F670235ADD17842278F3F /* Pods-Alohomora.debug.xcconfig */,
+				D4875778343A510F53E79556 /* Pods-Alohomora.release.xcconfig */,
+				C6269A45EBA881C4B74B9457 /* Pods-Alohomora-AlohomoraUITests.debug.xcconfig */,
+				1A01365DF5E8C98ACF7C2226 /* Pods-Alohomora-AlohomoraUITests.release.xcconfig */,
+				EA404D9584F60E535DA83AC1 /* Pods-AlohomoraTests.debug.xcconfig */,
+				C0BE9245CAE53423E078B365 /* Pods-AlohomoraTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +176,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607937982368EEA800B1E49B /* Build configuration list for PBXNativeTarget "Alohomora" */;
 			buildPhases = (
+				C2323345C22C6E69A4D62239 /* [CP] Check Pods Manifest.lock */,
 				607937692368EEA600B1E49B /* Sources */,
 				6079376A2368EEA600B1E49B /* Frameworks */,
 				6079376B2368EEA600B1E49B /* Resources */,
+				254F5548A25FD1C00229E7B8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +195,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6079379B2368EEA800B1E49B /* Build configuration list for PBXNativeTarget "AlohomoraTests" */;
 			buildPhases = (
+				5FDA1235CECF3943F51DD1F7 /* [CP] Check Pods Manifest.lock */,
 				607937802368EEA800B1E49B /* Sources */,
 				607937812368EEA800B1E49B /* Frameworks */,
 				607937822368EEA800B1E49B /* Resources */,
@@ -170,9 +214,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6079379E2368EEA800B1E49B /* Build configuration list for PBXNativeTarget "AlohomoraUITests" */;
 			buildPhases = (
+				70569F307E4175D415B0F3EE /* [CP] Check Pods Manifest.lock */,
 				6079378B2368EEA800B1E49B /* Sources */,
 				6079378C2368EEA800B1E49B /* Frameworks */,
 				6079378D2368EEA800B1E49B /* Resources */,
+				0514BB664B97C5A0F24D1F45 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -253,6 +299,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0514BB664B97C5A0F24D1F45 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Alohomora-AlohomoraUITests/Pods-Alohomora-AlohomoraUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Alohomora-AlohomoraUITests/Pods-Alohomora-AlohomoraUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Alohomora-AlohomoraUITests/Pods-Alohomora-AlohomoraUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		254F5548A25FD1C00229E7B8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Alohomora/Pods-Alohomora-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Alohomora/Pods-Alohomora-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Alohomora/Pods-Alohomora-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5FDA1235CECF3943F51DD1F7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AlohomoraTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		70569F307E4175D415B0F3EE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Alohomora-AlohomoraUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2323345C22C6E69A4D62239 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Alohomora-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		607937692368EEA600B1E49B /* Sources */ = {
@@ -434,6 +583,7 @@
 		};
 		607937992368EEA800B1E49B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 036F670235ADD17842278F3F /* Pods-Alohomora.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -451,6 +601,7 @@
 		};
 		6079379A2368EEA800B1E49B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4875778343A510F53E79556 /* Pods-Alohomora.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -468,6 +619,7 @@
 		};
 		6079379C2368EEA800B1E49B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA404D9584F60E535DA83AC1 /* Pods-AlohomoraTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -488,6 +640,7 @@
 		};
 		6079379D2368EEA800B1E49B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0BE9245CAE53423E078B365 /* Pods-AlohomoraTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -508,6 +661,7 @@
 		};
 		6079379F2368EEA800B1E49B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6269A45EBA881C4B74B9457 /* Pods-Alohomora-AlohomoraUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -527,6 +681,7 @@
 		};
 		607937A02368EEA800B1E49B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A01365DF5E8C98ACF7C2226 /* Pods-Alohomora-AlohomoraUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
