@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3EC1F358F25A15C24D3ACE51 /* Pods_Alohomora_AlohomoraUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E36F1015AD61F463FDD5BCDE /* Pods_Alohomora_AlohomoraUITests.framework */; };
+		6074A4BE236AB1FE007EDDDA /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6074A4BD236AB1FE007EDDDA /* TabViewController.swift */; };
+		6074A4C1236B29F7007EDDDA /* AddContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6074A4C0236B29F7007EDDDA /* AddContactsViewController.swift */; };
 		607937712368EEA600B1E49B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607937702368EEA600B1E49B /* AppDelegate.swift */; };
 		607937732368EEA600B1E49B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607937722368EEA600B1E49B /* ViewController.swift */; };
 		607937762368EEA600B1E49B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607937742368EEA600B1E49B /* Main.storyboard */; };
@@ -16,6 +18,10 @@
 		6079377E2368EEA800B1E49B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6079377C2368EEA800B1E49B /* LaunchScreen.storyboard */; };
 		607937892368EEA800B1E49B /* AlohomoraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607937882368EEA800B1E49B /* AlohomoraTests.swift */; };
 		607937942368EEA800B1E49B /* AlohomoraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607937932368EEA800B1E49B /* AlohomoraUITests.swift */; };
+		60E308272368F8450039FEDB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E308262368F8450039FEDB /* LoginViewController.swift */; };
+		60E30829236926750039FEDB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E30828236926750039FEDB /* GoogleService-Info.plist */; };
+		60E3082C236927B60039FEDB /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E3082B236927B50039FEDB /* SignupViewController.swift */; };
+		60E3082E236949650039FEDB /* LinkDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E3082D236949650039FEDB /* LinkDeviceViewController.swift */; };
 		97540F2941DBD40F485BCDA3 /* Pods_Alohomora.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C66636572912CB2593D508D6 /* Pods_Alohomora.framework */; };
 		F5A560E07B6DB5C2303AF9EA /* Pods_AlohomoraTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E92C635E4ED8B6B95E365E05 /* Pods_AlohomoraTests.framework */; };
 /* End PBXBuildFile section */
@@ -40,6 +46,8 @@
 /* Begin PBXFileReference section */
 		036F670235ADD17842278F3F /* Pods-Alohomora.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alohomora.debug.xcconfig"; path = "Target Support Files/Pods-Alohomora/Pods-Alohomora.debug.xcconfig"; sourceTree = "<group>"; };
 		1A01365DF5E8C98ACF7C2226 /* Pods-Alohomora-AlohomoraUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alohomora-AlohomoraUITests.release.xcconfig"; path = "Target Support Files/Pods-Alohomora-AlohomoraUITests/Pods-Alohomora-AlohomoraUITests.release.xcconfig"; sourceTree = "<group>"; };
+		6074A4BD236AB1FE007EDDDA /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		6074A4C0236B29F7007EDDDA /* AddContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactsViewController.swift; sourceTree = "<group>"; };
 		6079376D2368EEA600B1E49B /* Alohomora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alohomora.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607937702368EEA600B1E49B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		607937722368EEA600B1E49B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +62,10 @@
 		6079378F2368EEA800B1E49B /* AlohomoraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlohomoraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607937932368EEA800B1E49B /* AlohomoraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlohomoraUITests.swift; sourceTree = "<group>"; };
 		607937952368EEA800B1E49B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60E308262368F8450039FEDB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		60E30828236926750039FEDB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		60E3082B236927B50039FEDB /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		60E3082D236949650039FEDB /* LinkDeviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkDeviceViewController.swift; sourceTree = "<group>"; };
 		C0BE9245CAE53423E078B365 /* Pods-AlohomoraTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlohomoraTests.release.xcconfig"; path = "Target Support Files/Pods-AlohomoraTests/Pods-AlohomoraTests.release.xcconfig"; sourceTree = "<group>"; };
 		C6269A45EBA881C4B74B9457 /* Pods-Alohomora-AlohomoraUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alohomora-AlohomoraUITests.debug.xcconfig"; path = "Target Support Files/Pods-Alohomora-AlohomoraUITests/Pods-Alohomora-AlohomoraUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C66636572912CB2593D508D6 /* Pods_Alohomora.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alohomora.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +113,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6074A4BC236AB1C0007EDDDA /* Tabbed Items */ = {
+			isa = PBXGroup;
+			children = (
+				6074A4BD236AB1FE007EDDDA /* TabViewController.swift */,
+			);
+			path = "Tabbed Items";
+			sourceTree = "<group>";
+		};
+		6074A4BF236B29C0007EDDDA /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				6074A4C0236B29F7007EDDDA /* AddContactsViewController.swift */,
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
 		607937642368EEA600B1E49B = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +154,10 @@
 		6079376F2368EEA600B1E49B /* Alohomora */ = {
 			isa = PBXGroup;
 			children = (
+				6074A4BF236B29C0007EDDDA /* Contacts */,
+				6074A4BC236AB1C0007EDDDA /* Tabbed Items */,
+				60E3082A2369278B0039FEDB /* Authentication */,
+				60E30828236926750039FEDB /* GoogleService-Info.plist */,
 				607937702368EEA600B1E49B /* AppDelegate.swift */,
 				607937722368EEA600B1E49B /* ViewController.swift */,
 				607937742368EEA600B1E49B /* Main.storyboard */,
@@ -155,6 +187,16 @@
 			path = AlohomoraUITests;
 			sourceTree = "<group>";
 		};
+		60E3082A2369278B0039FEDB /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				60E308262368F8450039FEDB /* LoginViewController.swift */,
+				60E3082B236927B50039FEDB /* SignupViewController.swift */,
+				60E3082D236949650039FEDB /* LinkDeviceViewController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		9563B1CF439764308DE57BC5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,7 +207,6 @@
 				EA404D9584F60E535DA83AC1 /* Pods-AlohomoraTests.debug.xcconfig */,
 				C0BE9245CAE53423E078B365 /* Pods-AlohomoraTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -279,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6079377E2368EEA800B1E49B /* LaunchScreen.storyboard in Resources */,
+				60E30829236926750039FEDB /* GoogleService-Info.plist in Resources */,
 				6079377B2368EEA800B1E49B /* Assets.xcassets in Resources */,
 				607937762368EEA600B1E49B /* Main.storyboard in Resources */,
 			);
@@ -408,8 +450,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60E3082E236949650039FEDB /* LinkDeviceViewController.swift in Sources */,
+				6074A4C1236B29F7007EDDDA /* AddContactsViewController.swift in Sources */,
+				60E308272368F8450039FEDB /* LoginViewController.swift in Sources */,
 				607937732368EEA600B1E49B /* ViewController.swift in Sources */,
+				60E3082C236927B60039FEDB /* SignupViewController.swift in Sources */,
 				607937712368EEA600B1E49B /* AppDelegate.swift in Sources */,
+				6074A4BE236AB1FE007EDDDA /* TabViewController.swift in Sources */,
 				607937792368EEA600B1E49B /* Alohomora.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
