@@ -89,7 +89,7 @@ UINavigationControllerDelegate {
                                                        .userDomainMask, true)[0] as String
        
         
-        let userID = Auth.auth().currentUser!.email!
+        let userID = Auth.auth().currentUser!.uid
       
        
             
@@ -134,7 +134,7 @@ UINavigationControllerDelegate {
                 isTrusted = 0
             }
             let name = firstnameTxt.text! +  "_" + lastnameTxt.text!
-            
+             let path = "\(userID)/trusted/\(name)"
             //reference - https://firebase.google.com/docs/firestore/data-model
             self.db
                 .collection("UserData").document(userID)
@@ -144,7 +144,8 @@ UINavigationControllerDelegate {
                     "lastName": self.lastnameTxt.text!,
                     "phoneNumber": self.phoneNumberTxt.text!,
                     "trustedContact": isTrusted,
-                    "imgUrl": name
+                    "imgUrl": name,
+                    "imgPath":path
                     
                 ]) { err in
                     if err != nil {

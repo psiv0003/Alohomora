@@ -303,7 +303,7 @@
                                                 <rect key="frame" x="1" y="0.0" width="371" height="64"/>
                                                 <connections>
                                                     <action selector="photoGalleryButton:" destination="i2R-43-u7c" eventType="touchUpInside" id="yjK-o6-kr2"/>
-                                                    <segue destination="Vk5-O0-z15" kind="show" id="i2Q-Yp-l2O"/>
+                                                    <segue destination="YHb-Aj-y2H" kind="show" id="Yge-EQ-Cdz"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNh-hy-pnC">
@@ -410,14 +410,68 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9t-2v-QCd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8004.347826086957" y="902.67857142857133"/>
+            <point key="canvasLocation" x="8914.4927536231899" y="902.67857142857133"/>
+        </scene>
+        <!--Gallery-->
+        <scene sceneID="snv-6c-yjq">
+            <objects>
+                <tableViewController id="YHb-Aj-y2H" customClass="ImagesTableViewController" customModule="Alohomora" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="1ks-Vm-vDe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageCell" rowHeight="169" id="gd2-m4-Grc" customClass="ImageCellUITableViewCell" customModule="Alohomora" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="55.5" width="414" height="169"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gd2-m4-Grc" id="q91-wG-eXG">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="168.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j39-mm-Kmh">
+                                            <rect key="frame" x="87" y="20" width="240" height="128.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="240" id="R1P-wn-9cJ"/>
+                                                <constraint firstAttribute="height" constant="128.5" id="ji3-dZ-vgb"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="j39-mm-Kmh" firstAttribute="top" secondItem="q91-wG-eXG" secondAttribute="topMargin" constant="9" id="1kL-We-tQO"/>
+                                        <constraint firstItem="j39-mm-Kmh" firstAttribute="centerY" secondItem="q91-wG-eXG" secondAttribute="centerY" id="PZY-Vq-mRb"/>
+                                        <constraint firstItem="j39-mm-Kmh" firstAttribute="centerX" secondItem="q91-wG-eXG" secondAttribute="centerX" id="jlK-VV-vxt"/>
+                                        <constraint firstItem="j39-mm-Kmh" firstAttribute="leading" secondItem="q91-wG-eXG" secondAttribute="leadingMargin" constant="67" id="mbU-Ng-9sC"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="userImage" destination="j39-mm-Kmh" id="SrW-fn-FoT"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="YHb-Aj-y2H" id="xGM-1V-aOE"/>
+                            <outlet property="delegate" destination="YHb-Aj-y2H" id="kIY-Bu-emV"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Gallery" id="yd3-md-CIR">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="add-photo" id="BZ0-bo-dhJ">
+                            <color key="tintColor" red="0.15686274510000001" green="0.28627450980000002" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <segue destination="JVh-F0-rd0" kind="show" id="BJq-Xl-cTg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cmg-ZG-H5J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8004" y="1746"/>
         </scene>
         <!--Gallery-->
         <scene sceneID="qat-lh-g8a">
             <objects>
                 <collectionViewController id="Vk5-O0-z15" customClass="GalleryCollectionViewController" customModule="Alohomora" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="eYB-ia-tkb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7GB-Av-YVi">
@@ -427,7 +481,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="imageCell" id="uJT-Y0-tg6" customClass="ImageCollectionViewCell" customModule="Alohomora" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCell" id="uJT-Y0-tg6" customClass="ImageCollectionViewCell" customModule="Alohomora" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -456,16 +510,12 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Gallery" id="C9k-YF-mSk">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="add-photo" id="e2b-Pf-JC1">
-                            <connections>
-                                <segue destination="JVh-F0-rd0" kind="show" id="3MM-jx-L0S"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="add-photo" id="e2b-Pf-JC1"/>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C9w-n1-bBk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8743.4782608695659" y="902.67857142857133"/>
+            <point key="canvasLocation" x="9942.0289855072479" y="890.625"/>
         </scene>
         <!--Add Photo-->
         <scene sceneID="vQF-7f-SDk">
@@ -475,7 +525,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pa4-P5-w7L">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image-default" translatesAutoresizingMaskIntoConstraints="NO" id="Pa4-P5-w7L">
                                 <rect key="frame" x="87" y="139" width="240" height="216"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="216" id="CCs-fE-YHV"/>
@@ -506,7 +556,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.95686274509803915" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="Rhr-3m-eH6" firstAttribute="leading" secondItem="nkC-Hg-slk" secondAttribute="leading" constant="111" id="3Wj-i6-aK0"/>
                             <constraint firstItem="Pa4-P5-w7L" firstAttribute="top" secondItem="nkC-Hg-slk" secondAttribute="top" constant="51" id="3sZ-cx-0bj"/>
@@ -528,7 +578,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d2c-Ui-PIs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9489.855072463768" y="902.67857142857133"/>
+            <point key="canvasLocation" x="9445" y="1562"/>
         </scene>
         <!--Tab View Controller-->
         <scene sceneID="Rnb-ft-9gH">
@@ -546,7 +596,7 @@
                         <segue destination="3y5-X1-KJN" kind="relationship" relationship="viewControllers" id="A78-zh-BCQ"/>
                         <segue destination="56Y-yi-6fN" kind="relationship" relationship="viewControllers" id="l5B-F6-EIX"/>
                         <segue destination="jKJ-29-Xee" kind="relationship" relationship="viewControllers" id="4Bv-co-AcC"/>
-                        <segue destination="oXq-cn-ekH" kind="relationship" relationship="viewControllers" id="VBZ-50-UxY"/>
+                        <segue destination="KXN-Lj-Q6a" kind="relationship" relationship="viewControllers" id="VBZ-50-UxY"/>
                         <segue destination="XQu-V5-6JO" kind="relationship" relationship="viewControllers" id="hId-gz-pJ1"/>
                     </connections>
                 </tabBarController>
@@ -868,12 +918,20 @@
             </objects>
             <point key="canvasLocation" x="5242.0289855072469" y="1623.8839285714284"/>
         </scene>
+        <!--AV Player View Controller-->
+        <scene sceneID="PdE-29-hl3">
+            <objects>
+                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="tEm-bB-Arp" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hQP-Pw-OKt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7022" y="1637"/>
+        </scene>
         <!--Table View Controller-->
         <scene sceneID="maa-SE-ehS">
             <objects>
                 <tableViewController id="oXq-cn-ekH" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1hP-9t-i1a">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -891,14 +949,19 @@
                             <outlet property="delegate" destination="oXq-cn-ekH" id="9Bz-lq-1M5"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" systemItem="history" id="lox-tX-rsn">
-                        <color key="badgeColor" red="0.27450980390000002" green="0.35294117650000001" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
-                    </tabBarItem>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="hGa-lQ-dH8">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="3aj-Dd-1UJ">
+                            <connections>
+                                <segue destination="tEm-bB-Arp" kind="show" id="xau-48-OFq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6c8-ln-lpw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6144.9275362318849" y="903.34821428571422"/>
+            <point key="canvasLocation" x="7055.0724637681169" y="903.34821428571422"/>
         </scene>
         <!--Home-->
         <scene sceneID="D4N-vR-uiO">
@@ -1100,7 +1163,28 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IsA-P9-RES" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7094.202898550725" y="902.67857142857133"/>
+            <point key="canvasLocation" x="8004.347826086957" y="902.67857142857133"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vqF-yX-oez">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KXN-Lj-Q6a" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="history" id="lox-tX-rsn">
+                        <color key="badgeColor" red="0.27450980390000002" green="0.35294117650000001" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DwE-L2-KXd">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="oXq-cn-ekH" kind="relationship" relationship="rootViewController" id="wtK-Wo-ZTW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u88-Xm-aLi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6144.9275362318849" y="903.34821428571422"/>
         </scene>
     </scenes>
     <resources>

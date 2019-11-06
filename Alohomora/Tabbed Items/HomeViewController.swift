@@ -41,7 +41,7 @@ class HomeViewController: UIViewController {
     
     func listenForChanges() {
         let userID = Auth.auth().currentUser!.uid
-        db.collection("motionSensor").whereField("userid", isEqualTo: userID)
+        db.collection("motionSensor").whereField("userId", isEqualTo: userID)
             .addSnapshotListener { querySnapshot, error in
                 guard let snapshot = querySnapshot else {
                     print("Error fetching snapshots: \(error!)")
@@ -50,23 +50,38 @@ class HomeViewController: UIViewController {
                 snapshot.documentChanges.forEach { diff in
                     if (diff.type == .added) {
                         print("New city: \(diff.document.data())")
-                        self.notification()
+                        self.MotionNotification(data: "abcs")
                     }
                 
                 }
         }
 
+        
+        db.collection("pushButton").whereField("userId", isEqualTo: userID)
+            .addSnapshotListener { querySnapshot, error in
+                guard let snapshot = querySnapshot else {
+                    print("Error fetching snapshots: \(error!)")
+                    return
+                }
+                snapshot.documentChanges.forEach { diff in
+                    if (diff.type == .added) {
+                        print("New city: \(diff.document.data())")
+                        self.MotionNotification(data: "abcs")
+                    }
+                    
+                }
+        }
     }
   
 
-    func notification(){
+    func MotionNotification(data: String){
         
         
         let content = UNMutableNotificationContent()
-        content.title = "Melbourne Sights"
-        content.subtitle = "Sight Alert!"
-        content.body = "Hey Looks like you just left a historical sight!"
-        let imageName = "logo"
+        content.title = "Movement Alert"
+//        content.subtitle = "Sight Alert!"
+        content.body = "Hey there! Motion was just detected outside your door. Check to see who it is!"
+       // let imageName = "logo"
         // guard let imageURL = Bundle.main.url(forResource: imageName, withExtension: "png") else { return }
         
         //  let attachment = try! UNNotificationAttachment(identifier: imageName, url: imageURL, options: .none)

@@ -59,6 +59,7 @@ class LinkDeviceViewController: UIViewController {
                                 alertController.addAction(defaultAction)
                                 self.present(alertController, animated: true, completion: nil)
                             } else {
+                                self.updateDevicesTable(userId: userID)
                                  self.performSegue(withIdentifier: "linkToHomeSegue", sender: self)
                                 print("Document successfully written!")
                             }
@@ -79,7 +80,25 @@ class LinkDeviceViewController: UIViewController {
     }
 
   
-    func updateDevicesTable(){
+    func updateDevicesTable( userId: String){
+        
+        let deviceID = deviceId.text
+        let washingtonRef = db.collection("Devices").document(deviceID!)
+        
+        washingtonRef.updateData([
+            "hasUser": 1,
+            "userId": userId,
+            "lastUpdated": FieldValue.serverTimestamp()
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+
+        
+       
         
     }
     

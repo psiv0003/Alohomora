@@ -48,7 +48,7 @@ UINavigationControllerDelegate {
                                                        .userDomainMask, true)[0] as String
         
         
-        let userID = Auth.auth().currentUser!.email!
+        let userID = Auth.auth().currentUser!.uid
         
         
         
@@ -79,14 +79,16 @@ UINavigationControllerDelegate {
     
     func addToDB(date: String){
         let userID = Auth.auth().currentUser!.uid
+        let path = "\(userID)/user/\(date)"
   
             //reference - https://firebase.google.com/docs/firestore/data-model
             self.db
                 .collection("UserData").document(userID)
-                .collection("Images").document(date)
+                .collection("Images").document()
                 .setData([
                    
-                    "imgUrl": date
+                    "imgUrl": date,
+                    "imgPath": path
                    
                     
                 ]) { err in
