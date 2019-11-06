@@ -9,21 +9,49 @@
 import UIKit
 import CoreData
 import Firebase
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var notificationCenter: UNUserNotificationCenter!
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
          let db = Firestore.firestore()
+        self.notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.delegate = self
+        
+        //user notifications
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) {
+            (granted, error) in
+            if granted {
+                print("yes")
+            } else {
+                print("No")
+            }
+        }
+        let options: UNAuthorizationOptions = [.alert, .sound]
+        
+        // request permission
+        notificationCenter.requestAuthorization(options: options) { (granted, error) in
+            if !granted {
+                print("Permission not granted")
+            }
+        }
+        
+        if launchOptions?[UIApplication.LaunchOptionsKey.location] != nil {
+            print("I woke up thanks to geofencing")
+        }
 
         return true
     }
 
+    
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -92,6 +120,74 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+//    func notification(forRegion region: CLRegion){
+//
+//
+//        let content = UNMutableNotificationContent()
+//        content.title = "Melbourne Sights"
+//        content.subtitle = "Sight Alert!"
+//        content.body = "Hey Looks like you just left a historical sight!"
+//        let imageName = "logo"
+//        // guard let imageURL = Bundle.main.url(forResource: imageName, withExtension: "png") else { return }
+//
+//        //  let attachment = try! UNNotificationAttachment(identifier: imageName, url: imageURL, options: .none)
+//
+//        //  content.attachments = [attachment]
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+//        let request = UNNotificationRequest(identifier: "notification.id.01", content: content, trigger: trigger)
+//
+//        // 4
+//
+//        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+//    }
 
 }
+//extension AppDelegate: CLLocationManagerDelegate {
+//    // called when user Exits a monitored region
+//    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+//        if region is CLCircularRegion {
+//            let content = UNMutableNotificationContent()
+//            content.title = "Melbourne Sights"
+//            content.subtitle = "Sight Alert!"
+//            content.body = "Hey Looks like you just left a historical sight!"
+//            let imageName = "logo"
+//            
+//            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+//            let request = UNNotificationRequest(identifier: "notification.id.01", content: content, trigger: trigger)
+//            
+//            // 4
+//            
+//            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+//            // self.notification(forRegion: region)
+//        }
+//    }
+//    
+//    // called when user Enters a monitored region
+//    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+//        if region is CLCircularRegion {
+//            // Do what you want if this information
+//            let content = UNMutableNotificationContent()
+//            content.title = "Melbourne Sights"
+//            content.subtitle = "Sight Alert!"
+//            content.body = "Hey Looks like you have entered a place of interest!"
+//            let imageName = "logo"
+//            
+//            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+//            let request = UNNotificationRequest(identifier: "notification.id.01", content: content, trigger: trigger)
+//            
+//            // 4
+//            
+//            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+//        }
+//    }
+//}
 
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        // when app is onpen and in foregroud
+        completionHandler(.alert)
+    }
+}

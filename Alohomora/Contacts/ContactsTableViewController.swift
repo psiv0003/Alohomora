@@ -25,7 +25,8 @@ class ContactsTableViewController: UITableViewController {
     var contactList: [Contacts] = []
     var db: Firestore!
     
-    
+    let cellSpacingHeight: CGFloat = 5
+
     
 
     override func viewDidLoad() {
@@ -38,6 +39,7 @@ class ContactsTableViewController: UITableViewController {
         
         let storage = Storage.storage()
         storageRef = storage.reference()
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -52,6 +54,14 @@ class ContactsTableViewController: UITableViewController {
         return 1
     }
 
+
+    
+    // Make the background color show through
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return contactList.count
@@ -62,24 +72,47 @@ class ContactsTableViewController: UITableViewController {
            
         let contactCell = tableView.dequeueReusableCell(withIdentifier: CELL, for: indexPath) as! ContactsTableViewCell
         let contact = contactList[indexPath.row]
+        
+            //references - https://stackoverflow.com/questions/28598830/spacing-between-uitableviewcells/45515483
+            let whiteRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 8, width: self.view.frame.size.width - 20, height: 149))
+            
+            whiteRoundedView.layer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 1.0, 0.8])
+            whiteRoundedView.layer.masksToBounds = false
+            whiteRoundedView.clipsToBounds = true
+
+            whiteRoundedView.layer.cornerRadius = 10
+            whiteRoundedView.layer.shadowOffset = CGSize(width: -1, height: 1)
+            whiteRoundedView.layer.shadowOpacity = 0.2
+            
+            contactCell.contentView.addSubview(whiteRoundedView)
+            contactCell.contentView.sendSubviewToBack(whiteRoundedView)
+            
+            
+             contactCell.layer.cornerRadius = 10
+            
         contactCell.nameTxt.text = contact.firstName
         if(contact.trustedContact == 0){
             contactCell.isTrustedImageView.isHidden = true
         }
+            let email = Auth.auth().currentUser!.email!
+            let imgUrl = "\(email)/trusted/\(contact.imgUrl).jpeg"
         //get the user's profile image
-            let islandRef = storageRef.child(contact.imgUrl)
+            let islandRef = storageRef.child(imgUrl)
             islandRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
                 if let error = error {
                     print(error)
-                    // Uh-oh, an error occurred!
                 } else {
-                    print("image")
-                    // Data for "images/island.jpg" is returned
+                     // Data for "images/island.jpg" is returned
                     let image = UIImage(data: data!)
-                    
-//                    contactCell.userImageView.sd_setImageWithStorageReference(storageRef, placeholderImage: placeholderImage)
+                    contactCell.userImageView.image =  self.resizeImage(image: UIImage(data: data!)!, targetSize: CGSize(width: 84, height: 82))
 
-                    contactCell.userImageView.image = image
+
+                   // contactCell.userImageView.image = image
+                    contactCell.userImageView.layer.borderWidth = 1
+                    contactCell.userImageView.layer.masksToBounds = false
+                    contactCell.userImageView.layer.borderColor = UIColor.clear.cgColor
+                    contactCell.userImageView.layer.cornerRadius = contactCell.userImageView.frame.height/2
+                    contactCell.userImageView.clipsToBounds = true
                 }
 
             }
@@ -132,5 +165,32 @@ class ContactsTableViewController: UITableViewController {
             self.tableView.reloadData()
             
         }
+    }
+    
+    
+    func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
+        let size = image.size
+        
+        let widthRatio  = targetSize.width  / size.width
+        let heightRatio = targetSize.height / size.height
+        
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+        } else {
+            newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
+        }
+        
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+        
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
     }
 }

@@ -37,11 +37,13 @@ class LinkDeviceViewController: UIViewController {
                 for document in querySnapshot!.documents {
                    // print("\(document.documentID) => \(document.data())")
                     print(document.documentID)
+                    //the id entered by the user exists in teh "Devices" collection
+                    
                     if( self.deviceId.text == document.documentID){
                         print("same same " + document.documentID)
-                        // Add a new document with a generated ID
                         let userID = Auth.auth().currentUser!.uid
 
+                        // adding to the user table
                         //reference - https://firebase.google.com/docs/firestore/data-model
                         self.db
                             .collection("UserData").document(userID)
@@ -77,6 +79,10 @@ class LinkDeviceViewController: UIViewController {
     }
 
   
+    func updateDevicesTable(){
+        
+    }
+    
     @IBAction func link(_ sender: Any) {
         
         if (deviceId.text!.isEmpty && locationTextField.text!.isEmpty ){

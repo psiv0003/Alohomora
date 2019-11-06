@@ -1,8 +1,8 @@
 //
-//  AddContactsViewController.swift
+//  AddPhotoViewController.swift
 //  Alohomora
 //
-//  Created by Poornima Sivakumar on 1/11/19.
+//  Created by Poornima Sivakumar on 6/11/19.
 //  Copyright © 2019 Poornima Sivakumar. All rights reserved.
 //
 
@@ -12,20 +12,16 @@ import FirebaseFirestore
 import FirebaseAuth
 import FirebaseStorage
 
-class AddContactsViewController: UIViewController,  UIImagePickerControllerDelegate,
+
+class AddPhotoViewController: UIViewController,  UIImagePickerControllerDelegate,
 UINavigationControllerDelegate {
-    
+    @IBOutlet weak var imageView: UIImageView!
     var db: Firestore!
-    var isTrusted = -99
     var storageRef: StorageReference!
     
-    @IBOutlet weak var firstnameTxt: UITextField!
-    @IBOutlet weak var lastnameTxt: UITextField!
-    @IBOutlet weak var switchController: UISwitch!
-    @IBOutlet weak var phoneNumberTxt: UITextField!
-    @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+
         let settings = FirestoreSettings()
         
         Firestore.firestore().settings = settings
@@ -35,47 +31,10 @@ UINavigationControllerDelegate {
         let storage = Storage.storage()
         storageRef = storage.reference()
 
-
-
-
+        // Do any additional setup after loading the view.
     }
     
-    @IBAction func imageUpload(_ sender: Any) {
-        let controller = UIImagePickerController()
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            controller.sourceType = .camera
-        } else {
-            controller.sourceType = .photoLibrary
-        }
-        
-        controller.allowsEditing = false
-        controller.delegate = self
-        self.present(controller, animated: true, completion: nil)
-    }
-    
-   
-    
-    func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let pickedImage = info[.originalImage] as? UIImage {
-            imageView.image = pickedImage
-            imageView.layer.borderWidth = 1
-            imageView.layer.masksToBounds = false
-            imageView.layer.borderColor = UIColor.clear.cgColor
-            imageView.layer.cornerRadius = imageView.frame.height/2
-            imageView.clipsToBounds = true
-        }
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        displayMessage("There was an error in getting the image", "Error")
-    }
-    
-    
-    @IBAction func saveContact(_ sender: Any) {
-    
-        //references - https://firebase.google.com/docs/storage/ios/upload-files
+    @IBAction func savePhoto(_ sender: Any) {
         guard let image = imageView.image else {
             displayMessage("Cannot save until a photo has been taken!", "Error")
             return
@@ -87,64 +46,48 @@ UINavigationControllerDelegate {
         
         let path = NSSearchPathForDirectoriesInDomains(.documentDirectory,
                                                        .userDomainMask, true)[0] as String
-       
+        
         
         let userID = Auth.auth().currentUser!.email!
-      
-       
-            
-        let name = firstnameTxt.text! +  "_" + lastnameTxt.text!
-        let riversRef = storageRef.child("\(userID)/trusted/\(name).jpeg")
+        
+        
+        
+        let riversRef = storageRef.child("\(userID)/user/\(date).jpeg")
         let uploadTask = riversRef.putData(data, metadata: nil) { (metadata, error) in
             guard let metadata = metadata else {
                 // Uh-oh, an error occurred!
                 return
             }
-            // Metadata contains file metadata such as size, content-type.
+             self.navigationController?.popViewController(animated: true)
             let size = metadata.size
             riversRef.downloadURL { (url, error) in
                 guard let downloadURL = url else {
                     // Uh-oh, an error occurred!
                     return
                 }
-                
+
                 print("URL--------")
                 print(downloadURL)
-                self.addToDB(name: name)
+                self.addToDB( date: "\(date)")
             }
         }
         
-     
 
     }
     
     
-    func addToDB(name: String){
-         let userID = Auth.auth().currentUser!.uid
-        if (firstnameTxt.text!.isEmpty && lastnameTxt.text!.isEmpty && phoneNumberTxt.text!.isEmpty){
-            let alertController = UIAlertController(title: "Error", message: "Please enter the required data.", preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            
-            alertController.addAction(defaultAction)
-            self.present(alertController, animated: true, completion: nil)
-        }else{
-            if ( switchController.isOn) {
-                isTrusted = 1
-            }else {
-                isTrusted = 0
-            }
-            let name = firstnameTxt.text! +  "_" + lastnameTxt.text!
-            
+    
+    func addToDB(date: String){
+        let userID = Auth.auth().currentUser!.uid
+  
             //reference - https://firebase.google.com/docs/firestore/data-model
             self.db
                 .collection("UserData").document(userID)
-                .collection("Contacts").document(name)
+                .collection("Images").document(date)
                 .setData([
-                    "firstName": self.firstnameTxt.text!,
-                    "lastName": self.lastnameTxt.text!,
-                    "phoneNumber": self.phoneNumberTxt.text!,
-                    "trustedContact": isTrusted,
-                    "imgUrl": name
+                   
+                    "imgUrl": date
+                   
                     
                 ]) { err in
                     if err != nil {
@@ -159,12 +102,25 @@ UINavigationControllerDelegate {
                         //self.performSegue(withIdentifier: "linkToHomeSegue", sender: self)
                         print("Document successfully written!")
                     }
-            }
-        }
+            
         
+        
+    }
     }
     
     
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[.originalImage] as? UIImage {
+            imageView.image = pickedImage
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        displayMessage("There was an error in getting the image", "Error")
+    }
     
     func displayMessage(_ message: String,_ title: String) {
         let alertController = UIAlertController(title: title, message: message,
@@ -175,8 +131,19 @@ UINavigationControllerDelegate {
     }
     
     
-
+    @IBAction func selectPhoto(_ sender: Any) {
+        let controller = UIImagePickerController()
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            controller.sourceType = .camera
+        } else {
+            controller.sourceType = .photoLibrary
+        }
+        
+        controller.allowsEditing = false
+        controller.delegate = self
+        self.present(controller, animated: true, completion: nil)
+    }
+   
 
 
 }
-
