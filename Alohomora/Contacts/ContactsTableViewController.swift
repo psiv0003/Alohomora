@@ -79,7 +79,7 @@ class ContactsTableViewController: UITableViewController {
             whiteRoundedView.layer.masksToBounds = false
             whiteRoundedView.clipsToBounds = true
 
-            whiteRoundedView.layer.cornerRadius = 10
+            whiteRoundedView.layer.cornerRadius = 20
             whiteRoundedView.layer.shadowOffset = CGSize(width: -1, height: 1)
             whiteRoundedView.layer.shadowOpacity = 0.2
             
