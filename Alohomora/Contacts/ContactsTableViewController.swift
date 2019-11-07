@@ -118,20 +118,43 @@ class ContactsTableViewController: UITableViewController {
         return contactCell
     }
             
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        
-        return false
-    }
-    
+//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+//
+//        return false
+//    }
+//
     override func tableView(_ tableView: UITableView, commit editingStyle:
         UITableViewCell.EditingStyle,
                             forRowAt indexPath: IndexPath) {
         if editingStyle == .delete  {
+            let contact = contactList[indexPath.row]
+            let userId = Auth.auth().currentUser!.uid
+            let name =  "\(contact.firstName)_\(contact.lastName)"
+            
+            db.collection("UserData").document(userId).collection("Contacts").document(name).delete() { err in
+                if let err = err {
+                    print("Error removing document: \(err)")
+                } else {
+                    
+                    print("Document successfully removed!")
+                    
+                }
+            }
+
+            
             self.contactList.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
 
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "viewContactSegue", sender: contactList[indexPath.row])
+    }
+
+    
     func loadUserData(){
           print("DATAaaaa")
         //getting data from firebase and ordering it by time
@@ -139,6 +162,7 @@ class ContactsTableViewController: UITableViewController {
         let userID = Auth.auth().currentUser!.uid
         print(userID)
         let basicQuery = Firestore.firestore().collection("UserData").document(userID).collection("Contacts")
+        .order(by: "firstName", descending: false)
         basicQuery.getDocuments { (snapshot, error) in
             if let error = error {
                 print("Oh no! Got an error! \(error.localizedDescription)")
@@ -192,4 +216,16 @@ class ContactsTableViewController: UITableViewController {
         
         return newImage!
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if  segue.identifier == "viewContactSegue",
+            let destination = segue.destination as? ContactDetailsViewController
+            //let blogIndex = tableView.indexPathForSelectedRow?.row
+        {
+            let contact = sender as! Contacts
+            
+            destination.contactObj = contact
+        }
+    }
+
 }

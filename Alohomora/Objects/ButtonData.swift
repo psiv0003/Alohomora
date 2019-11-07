@@ -25,4 +25,4 @@ class ButtonData: Codable {
         self.name = name
     }
 }
-extension Timestamp: TimestampType {}
+//extension Timestamp: TimestampType {}

@@ -1,8 +1,8 @@
 //
-//  HistoryTableViewController.swift
+//  MotionTableViewController.swift
 //  Alohomora
 //
-//  Created by Poornima Sivakumar on 7/11/19.
+//  Created by Poornima Sivakumar on 8/11/19.
 //  Copyright © 2019 Poornima Sivakumar. All rights reserved.
 //
 
@@ -13,17 +13,15 @@ import FirebaseAuth
 import Firebase
 import CodableFirebase
 
+var tempMotionData: [Motion] = []
 
-var tempButtonData: [ButtonData] = []
-class HistoryTableViewController: UITableViewController {
-    
-    
-    @IBOutlet weak var timeSegmentContoller: UISegmentedControl!
-    
+class MotionTableViewController: UITableViewController {
 
-    let CELL = "historyCell"
+    @IBOutlet weak var segmentController: UISegmentedControl!
+    
+    let CELL = "motionCell"
     var storageRef: StorageReference!
-    var buttonDataList: [ButtonData] = []
+    var motionDataList: [Motion] = []
     var db: Firestore!
     var userID = ""
     
@@ -43,7 +41,8 @@ class HistoryTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.buttonDataList.removeAll()
+        print("hii")
+        self.motionDataList.removeAll()
         //tableView.reloadData()
         loadUserDataToday()
     }
@@ -53,6 +52,28 @@ class HistoryTableViewController: UITableViewController {
         return 1
     }
     
+    @IBAction func timeChangeController(_ sender: Any) {
+        switch segmentController.selectedSegmentIndex
+        {
+        case 0:
+            //today
+            self.motionDataList.removeAll()
+            loadUserDataToday()
+            self.tableView.reloadData()
+        case 1: // this week
+            self.motionDataList.removeAll()
+            loadUserDataWeek()
+            self.tableView.reloadData()
+        case 2: // all time
+            self.motionDataList.removeAll()
+            loadUserDataAll()
+            print("alll")
+            self.tableView.reloadData()
+            
+        default:
+            break
+        }
+    }
     // Make the background color show through
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
@@ -62,37 +83,16 @@ class HistoryTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return buttonDataList.count
+        return motionDataList.count
     }
     
-    @IBAction func timeSegmentChange(_ sender: Any) {
-        switch timeSegmentContoller.selectedSegmentIndex
-        {
-        case 0:
-            //today
-            self.buttonDataList.removeAll()
-            loadUserDataToday()
-            self.tableView.reloadData()
-        case 1: // this week
-            self.buttonDataList.removeAll()
-            loadUserDataWeek()
-            self.tableView.reloadData()
-        case 2: // all time
-            self.buttonDataList.removeAll()
-            loadUserDataAll()
-            self.tableView.reloadData()
-            
-        default:
-            break
-        }
-    }
-    
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->
         UITableViewCell {
             
-            let buttonCell = tableView.dequeueReusableCell(withIdentifier: CELL, for: indexPath) as! HistoryTableViewCell
-            let button = buttonDataList[indexPath.row]
+            let buttonCell = tableView.dequeueReusableCell(withIdentifier: CELL, for: indexPath) as! MotionTableViewCell
+            let button = motionDataList[indexPath.row]
             
             //references - https://stackoverflow.com/questions/28598830/spacing-between-uitableviewcells/45515483
             let whiteRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 8, width: self.view.frame.size.width - 20, height: 149))
@@ -105,18 +105,13 @@ class HistoryTableViewController: UITableViewController {
             whiteRoundedView.layer.shadowOffset = CGSize(width: -1, height: 1)
             whiteRoundedView.layer.shadowOpacity = 0.2
             
-       
+            
             
             buttonCell.contentView.addSubview(whiteRoundedView)
             buttonCell.contentView.sendSubviewToBack(whiteRoundedView)
             buttonCell.layer.cornerRadius = 10
             
-            if(button.name == "No Face"){
-                 buttonCell.nameTxt.text = "Unknown"
-            } else {
-                 buttonCell.nameTxt.text = button.name
-            }
-           
+          
             
             var time  = Date(timeIntervalSince1970: TimeInterval(button.time.seconds))
             let dateFormatterPrint = DateFormatter()
@@ -125,30 +120,30 @@ class HistoryTableViewController: UITableViewController {
             
             var fTime = dateFormatterPrint.string(from: time)
             
-            buttonCell.timeTxt.text = "\(fTime)"
+            buttonCell.detectedAtTxt.text = "\(fTime)"
             
             let email = Auth.auth().currentUser!.uid
-            let imgUrl = button.image_url
-            //get the user's profile image
-            let islandRef = storageRef.child(imgUrl)
-            islandRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
-                if let error = error {
-                    print(error)
-                } else {
-                    // Data for "images/island.jpg" is returned
-                    let image = UIImage(data: data!)
-                    buttonCell.personImage.image =  self.resizeImage(image: UIImage(data: data!)!, targetSize: CGSize(width: 84, height: 82))
-                    
-                    
-                    // contactCell.userImageView.image = image
-                    buttonCell.personImage.layer.borderWidth = 1
-                    buttonCell.personImage.layer.masksToBounds = false
-                    buttonCell.personImage.layer.borderColor = UIColor.clear.cgColor
-                    buttonCell.personImage.layer.cornerRadius = buttonCell.personImage.frame.height/2
-                    buttonCell.personImage.clipsToBounds = true
-                }
-                
-            }
+//            let imgUrl = button.image_url
+//            //get the user's profile image
+//            let islandRef = storageRef.child(imgUrl)
+//            islandRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+//                if let error = error {
+//                    print(error)
+//                } else {
+//                    // Data for "images/island.jpg" is returned
+//                    let image = UIImage(data: data!)
+//                    buttonCell.personImage.image =  self.resizeImage(image: UIImage(data: data!)!, targetSize: CGSize(width: 84, height: 82))
+//
+//
+//                    // contactCell.userImageView.image = image
+//                    buttonCell.personImage.layer.borderWidth = 1
+//                    buttonCell.personImage.layer.masksToBounds = false
+//                    buttonCell.personImage.layer.borderColor = UIColor.clear.cgColor
+//                    buttonCell.personImage.layer.cornerRadius = buttonCell.personImage.frame.height/2
+//                    buttonCell.personImage.clipsToBounds = true
+//                }
+//
+//            }
             return buttonCell
     }
     
@@ -161,7 +156,7 @@ class HistoryTableViewController: UITableViewController {
         UITableViewCell.EditingStyle,
                             forRowAt indexPath: IndexPath) {
         if editingStyle == .delete  {
-            self.buttonDataList.remove(at: indexPath.row)
+            self.motionDataList.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -169,14 +164,14 @@ class HistoryTableViewController: UITableViewController {
     func loadUserDataToday(){
         //getting data from firebase and ordering it by time
         //references: https://codelabs.developers.google.com/codelabs/firebase-cloud-firestore-workshop-swift/index.html?index=..%2F..index#3
-       
+        
         let calendar = Calendar.current
         let components = calendar.dateComponents([.year, .month, .day], from: Date())
         let start = calendar.date(from: components)!
         let end = calendar.date(byAdding: .day, value: 1, to: start)!
         
         
-        let basicQuery = Firestore.firestore().collection("pushButton")
+        let basicQuery = Firestore.firestore().collection("motionSensor")
             .whereField("userId", isEqualTo: userID)
             .whereField("time", isGreaterThan: start)
             .whereField("time", isLessThan: end)
@@ -193,37 +188,53 @@ class HistoryTableViewController: UITableViewController {
                 do {
                     
                     //decoding the json and storing it in a sensor object format
-                    let sData = try FirestoreDecoder().decode(ButtonData.self, from: sensortDoc.data())
-                    self.buttonDataList.append(sData)
-                    print(sData.name)
+                    let sData = try FirestoreDecoder().decode(Motion.self, from: sensortDoc.data())
+                    self.motionDataList.append(sData)
+                  
                 } catch let error {
                     print(error)
                 }
                 
             }
             
-            tempButtonData = self.buttonDataList
+           // tempButtonData = self.motionDataList
             self.tableView.reloadData()
             
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "viewVideoSegue", sender: motionDataList[indexPath.row])
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if  segue.identifier == "viewVideoSegue",
+            let destination = segue.destination as? MotionVideo
+            //let blogIndex = tableView.indexPathForSelectedRow?.row
+        {
+            let contact = sender as! Motion
+            
+            destination.motionObj = contact
+        }
+    }
     
     func loadUserDataWeek(){
         //getting data from firebase and ordering it by time
         //references: https://codelabs.developers.google.com/codelabs/firebase-cloud-firestore-workshop-swift/index.html?index=..%2F..index#3
         
-      
+        
         
         let calendar = Calendar.current
         let components = calendar.dateComponents([.year, .month, .day], from: Date())
         let start = calendar.date(from: components)!
-       
+        
         let end = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: Date())!
-
+        
         print(end)
         
-        let basicQuery = Firestore.firestore().collection("pushButton")
+        let basicQuery = Firestore.firestore().collection("motionSensor")
             .whereField("userId", isEqualTo: userID)
             .whereField("time", isGreaterThan: end)
             .whereField("time", isLessThan: start)
@@ -240,16 +251,16 @@ class HistoryTableViewController: UITableViewController {
                 do {
                     
                     //decoding the json and storing it in a sensor object format
-                    let sData = try FirestoreDecoder().decode(ButtonData.self, from: sensortDoc.data())
-                    self.buttonDataList.append(sData)
-                    print(sData.name)
+                    let sData = try FirestoreDecoder().decode(Motion.self, from: sensortDoc.data())
+                    self.motionDataList.append(sData)
+                  
                 } catch let error {
                     print(error)
                 }
                 
             }
             
-            tempButtonData = self.buttonDataList
+            //tempButtonData = self.motionDataList
             self.tableView.reloadData()
             
         }
@@ -261,9 +272,9 @@ class HistoryTableViewController: UITableViewController {
         
         
         
-      
         
-        let basicQuery = Firestore.firestore().collection("pushButton")
+        print("all")
+        let basicQuery = Firestore.firestore().collection("motionSensor")
             .whereField("userId", isEqualTo: userID)
             .order(by: "time", descending: true)
         basicQuery.getDocuments { (snapshot, error) in
@@ -278,16 +289,15 @@ class HistoryTableViewController: UITableViewController {
                 do {
                     
                     //decoding the json and storing it in a sensor object format
-                    let sData = try FirestoreDecoder().decode(ButtonData.self, from: sensortDoc.data())
-                    self.buttonDataList.append(sData)
-                    print(sData.name)
+                    let sData = try FirestoreDecoder().decode(Motion.self, from: sensortDoc.data())
+                    self.motionDataList.append(sData)
                 } catch let error {
                     print(error)
                 }
                 
             }
             
-            tempButtonData = self.buttonDataList
+           // tempButtonData = self.motionDataList
             self.tableView.reloadData()
             
         }
@@ -318,5 +328,5 @@ class HistoryTableViewController: UITableViewController {
         UIGraphicsEndImageContext()
         
         return newImage!
-    }
+}
 }

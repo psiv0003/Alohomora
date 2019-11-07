@@ -70,7 +70,7 @@ class HomeViewController: UIViewController {
                 }
                 snapshot.documentChanges.forEach { diff in
                     if (diff.type == .added) {
-                        print("New city: \(diff.document.data())")
+                      //  print("New city: \(diff.document.data())")
                         self.MotionNotification(data: "abcs")
                     }
                 
@@ -86,7 +86,7 @@ class HomeViewController: UIViewController {
                 }
                 snapshot.documentChanges.forEach { diff in
                     if (diff.type == .added) {
-                        print("New city: \(diff.document.data())")
+                      //  print("New city: \(diff.document.data())")
                         self.MotionNotification(data: "abcs")
                     }
                     

@@ -16,12 +16,14 @@ class Contacts: Codable {
     var phoneNumber: String
     var imgUrl: String
     var trustedContact: Int
+    var imgPath: String
     
-    init(firstName: String, lastName: String, phoneNumber: String, imgUrl: String, trustedContact: Int) {
+    init(firstName: String, lastName: String, phoneNumber: String, imgUrl: String, trustedContact: Int, imgPath: String) {
         self.firstName = firstName
         self.lastName = lastName
         self.phoneNumber = phoneNumber
         self.imgUrl = imgUrl
+        self.imgPath = imgPath
         self.trustedContact = trustedContact
     }
 }

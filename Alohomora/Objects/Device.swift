@@ -11,12 +11,13 @@ import Firebase
 import CodableFirebase
 
 class Device: Codable {
-    //var imgUrl: String
+    var deviceId: String
     var location: String
     
     
-    init(location: String) {
+    init(location: String, deviceId: String) {
         
         self.location = location
+        self.deviceId = deviceId
     }
 }

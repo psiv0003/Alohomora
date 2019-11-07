@@ -1,5 +1,5 @@
 //
-//  DeviceTableViewCell.swift
+//  MotionTableViewCell.swift
 //  Alohomora
 //
 //  Created by Poornima Sivakumar on 8/11/19.
@@ -8,10 +8,9 @@
 
 import UIKit
 
-class DeviceTableViewCell: UITableViewCell {
+class MotionTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var deviceIdTxt: UILabel!
-    @IBOutlet weak var locationTxt: UILabel!
+    @IBOutlet weak var detectedAtTxt: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,4 +22,6 @@ class DeviceTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func watchVideoButton(_ sender: Any) {
+    }
 }

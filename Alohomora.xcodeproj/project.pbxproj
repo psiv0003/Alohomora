@@ -15,7 +15,6 @@
 		6007F512237453A200482828 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6007F511237453A200482828 /* Device.swift */; };
 		6007F51523745F3E00482828 /* DeviceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6007F51423745F3E00482828 /* DeviceTableViewController.swift */; };
 		6007F51723745F5100482828 /* DeviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6007F51623745F5100482828 /* DeviceTableViewCell.swift */; };
-		6007F5192374651800482828 /* AddDeviceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6007F5182374651800482828 /* AddDeviceTableViewController.swift */; };
 		6012BA362371628400677F75 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6012BA352371628400677F75 /* ContactsTableViewController.swift */; };
 		6012BA382371629300677F75 /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6012BA372371629300677F75 /* ContactsTableViewCell.swift */; };
 		6012BA3B237164E100677F75 /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6012BA3A237164E100677F75 /* Contacts.swift */; };
@@ -37,6 +36,12 @@
 		6079377E2368EEA800B1E49B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6079377C2368EEA800B1E49B /* LaunchScreen.storyboard */; };
 		607937892368EEA800B1E49B /* AlohomoraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607937882368EEA800B1E49B /* AlohomoraTests.swift */; };
 		607937942368EEA800B1E49B /* AlohomoraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607937932368EEA800B1E49B /* AlohomoraUITests.swift */; };
+		60A81B652374665C00E66815 /* AddDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A81B642374665C00E66815 /* AddDeviceViewController.swift */; };
+		60A81B6723746EB700E66815 /* ContactDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A81B6623746EB700E66815 /* ContactDetailsViewController.swift */; };
+		60A81B692374877900E66815 /* MotionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A81B682374877900E66815 /* MotionTableViewController.swift */; };
+		60A81B6B2374878D00E66815 /* MotionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A81B6A2374878D00E66815 /* MotionTableViewCell.swift */; };
+		60A81B6D2374880200E66815 /* Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A81B6C2374880200E66815 /* Motion.swift */; };
+		60A81B6F23748E5000E66815 /* MotionVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A81B6E23748E5000E66815 /* MotionVideo.swift */; };
 		60E308272368F8450039FEDB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E308262368F8450039FEDB /* LoginViewController.swift */; };
 		60E30829236926750039FEDB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60E30828236926750039FEDB /* GoogleService-Info.plist */; };
 		60E3082C236927B60039FEDB /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E3082B236927B50039FEDB /* SignupViewController.swift */; };
@@ -72,7 +77,6 @@
 		6007F511237453A200482828 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		6007F51423745F3E00482828 /* DeviceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTableViewController.swift; sourceTree = "<group>"; };
 		6007F51623745F5100482828 /* DeviceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTableViewCell.swift; sourceTree = "<group>"; };
-		6007F5182374651800482828 /* AddDeviceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeviceTableViewController.swift; sourceTree = "<group>"; };
 		6012BA352371628400677F75 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		6012BA372371629300677F75 /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
 		6012BA3A237164E100677F75 /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
@@ -100,6 +104,12 @@
 		6079378F2368EEA800B1E49B /* AlohomoraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlohomoraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607937932368EEA800B1E49B /* AlohomoraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlohomoraUITests.swift; sourceTree = "<group>"; };
 		607937952368EEA800B1E49B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60A81B642374665C00E66815 /* AddDeviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeviceViewController.swift; sourceTree = "<group>"; };
+		60A81B6623746EB700E66815 /* ContactDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailsViewController.swift; sourceTree = "<group>"; };
+		60A81B682374877900E66815 /* MotionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionTableViewController.swift; sourceTree = "<group>"; };
+		60A81B6A2374878D00E66815 /* MotionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionTableViewCell.swift; sourceTree = "<group>"; };
+		60A81B6C2374880200E66815 /* Motion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motion.swift; sourceTree = "<group>"; };
+		60A81B6E23748E5000E66815 /* MotionVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionVideo.swift; sourceTree = "<group>"; };
 		60E308262368F8450039FEDB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		60E30828236926750039FEDB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		60E3082B236927B50039FEDB /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -156,7 +166,7 @@
 			children = (
 				6007F51423745F3E00482828 /* DeviceTableViewController.swift */,
 				6007F51623745F5100482828 /* DeviceTableViewCell.swift */,
-				6007F5182374651800482828 /* AddDeviceTableViewController.swift */,
+				60A81B642374665C00E66815 /* AddDeviceViewController.swift */,
 			);
 			path = Devices;
 			sourceTree = "<group>";
@@ -168,6 +178,7 @@
 				6012BA4523728E2C00677F75 /* ImageData.swift */,
 				6007F50D2373D0B900482828 /* ButtonData.swift */,
 				6007F511237453A200482828 /* Device.swift */,
+				60A81B6C2374880200E66815 /* Motion.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -191,6 +202,9 @@
 				6007F5092373C56B00482828 /* HistoryTableViewCell.swift */,
 				6007F50B2373CA1A00482828 /* HistoryTableViewController.swift */,
 				6007F50F2374058200482828 /* HistoryMenuViewController.swift */,
+				60A81B682374877900E66815 /* MotionTableViewController.swift */,
+				60A81B6A2374878D00E66815 /* MotionTableViewCell.swift */,
+				60A81B6E23748E5000E66815 /* MotionVideo.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -210,6 +224,7 @@
 				6074A4C0236B29F7007EDDDA /* AddContactsViewController.swift */,
 				6012BA352371628400677F75 /* ContactsTableViewController.swift */,
 				6012BA372371629300677F75 /* ContactsTableViewCell.swift */,
+				60A81B6623746EB700E66815 /* ContactDetailsViewController.swift */,
 			);
 			path = Contacts;
 			sourceTree = "<group>";
@@ -540,17 +555,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				60E3082E236949650039FEDB /* LinkDeviceViewController.swift in Sources */,
+				60A81B692374877900E66815 /* MotionTableViewController.swift in Sources */,
 				6012BA522373052900677F75 /* ImageCellUITableViewCell.swift in Sources */,
 				6074A4C1236B29F7007EDDDA /* AddContactsViewController.swift in Sources */,
 				6012BA382371629300677F75 /* ContactsTableViewCell.swift in Sources */,
 				6012BA4823729BAB00677F75 /* HomeViewController.swift in Sources */,
 				60E308272368F8450039FEDB /* LoginViewController.swift in Sources */,
 				607937732368EEA600B1E49B /* ViewController.swift in Sources */,
+				60A81B6D2374880200E66815 /* Motion.swift in Sources */,
+				60A81B652374665C00E66815 /* AddDeviceViewController.swift in Sources */,
 				60E3082C236927B60039FEDB /* SignupViewController.swift in Sources */,
 				6012BA3B237164E100677F75 /* Contacts.swift in Sources */,
 				6012BA4C2372EB0A00677F75 /* ImagesTableViewController.swift in Sources */,
 				6012BA4623728E2C00677F75 /* ImageData.swift in Sources */,
-				6007F5192374651800482828 /* AddDeviceTableViewController.swift in Sources */,
 				6007F50C2373CA1A00482828 /* HistoryTableViewController.swift in Sources */,
 				6012BA4423727A5F00677F75 /* AddPhotoViewController.swift in Sources */,
 				607937712368EEA600B1E49B /* AppDelegate.swift in Sources */,
@@ -559,8 +576,11 @@
 				6007F512237453A200482828 /* Device.swift in Sources */,
 				6007F51523745F3E00482828 /* DeviceTableViewController.swift in Sources */,
 				6007F50A2373C56B00482828 /* HistoryTableViewCell.swift in Sources */,
+				60A81B6B2374878D00E66815 /* MotionTableViewCell.swift in Sources */,
 				6074A4BE236AB1FE007EDDDA /* TabViewController.swift in Sources */,
 				6012BA42237278DE00677F75 /* ImageCollectionViewCell.swift in Sources */,
+				60A81B6F23748E5000E66815 /* MotionVideo.swift in Sources */,
+				60A81B6723746EB700E66815 /* ContactDetailsViewController.swift in Sources */,
 				607937792368EEA600B1E49B /* Alohomora.xcdatamodeld in Sources */,
 				6007F5102374058200482828 /* HistoryMenuViewController.swift in Sources */,
 				6012BA362371628400677F75 /* ContactsTableViewController.swift in Sources */,

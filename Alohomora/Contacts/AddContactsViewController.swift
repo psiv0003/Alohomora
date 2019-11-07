@@ -134,7 +134,7 @@ UINavigationControllerDelegate {
                 isTrusted = 0
             }
             let name = firstnameTxt.text! +  "_" + lastnameTxt.text!
-             let path = "\(userID)/trusted/\(name)"
+             let path = "\(userID)/trusted/\(name).jpeg"
             //reference - https://firebase.google.com/docs/firestore/data-model
             self.db
                 .collection("UserData").document(userID)
