@@ -47,7 +47,7 @@ class LinkDeviceViewController: UIViewController {
                         //reference - https://firebase.google.com/docs/firestore/data-model
                         self.db
                             .collection("UserData").document(userID)
-                            .collection("Devices").document(document.documentID)
+                            .collection("Devices").document()
                         .setData([
                             "location": self.locationTextField.text ?? "Main door",
                             "deviceId": self.deviceId.text

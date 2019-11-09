@@ -45,6 +45,7 @@ class HistoryTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         self.buttonDataList.removeAll()
         //tableView.reloadData()
+        timeSegmentContoller.selectedSegmentIndex = 0
         loadUserDataToday()
     }
     
@@ -113,8 +114,10 @@ class HistoryTableViewController: UITableViewController {
             
             if(button.name == "No Face"){
                  buttonCell.nameTxt.text = "Unknown"
+               
             } else {
                  buttonCell.nameTxt.text = button.name
+                 buttonCell.addPerson.isHidden = true
             }
            
             
@@ -128,7 +131,7 @@ class HistoryTableViewController: UITableViewController {
             buttonCell.timeTxt.text = "\(fTime)"
             
             let email = Auth.auth().currentUser!.uid
-            let imgUrl = button.image_url
+            let imgUrl = "\(button.image_url).jpg"
             //get the user's profile image
             let islandRef = storageRef.child(imgUrl)
             islandRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
@@ -157,15 +160,27 @@ class HistoryTableViewController: UITableViewController {
         return false
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle:
-        UITableViewCell.EditingStyle,
-                            forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete  {
-            self.buttonDataList.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        var selectedContact = buttonDataList[indexPath.row]
+        if( selectedContact.name == "No Face"){
+            performSegue(withIdentifier: "addToContactSegue", sender: buttonDataList[indexPath.row])
+
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if  segue.identifier == "addToContactSegue",
+            let destination = segue.destination as? AddToContactVCViewController
+            //let blogIndex = tableView.indexPathForSelectedRow?.row
+        {
+            let contact = sender as! ButtonData
+            
+            destination.buttonData = contact
+        }
+    }
+  
     func loadUserDataToday(){
         //getting data from firebase and ordering it by time
         //references: https://codelabs.developers.google.com/codelabs/firebase-cloud-firestore-workshop-swift/index.html?index=..%2F..index#3
@@ -215,9 +230,9 @@ class HistoryTableViewController: UITableViewController {
         
       
         
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.year, .month, .day], from: Date())
-        let start = calendar.date(from: components)!
+        
+        let actualStart = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+        print(actualStart)
        
         let end = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: Date())!
 
@@ -226,7 +241,7 @@ class HistoryTableViewController: UITableViewController {
         let basicQuery = Firestore.firestore().collection("pushButton")
             .whereField("userId", isEqualTo: userID)
             .whereField("time", isGreaterThan: end)
-            .whereField("time", isLessThan: start)
+            .whereField("time", isLessThan: actualStart)
             .order(by: "time", descending: true)
         basicQuery.getDocuments { (snapshot, error) in
             if let error = error {

@@ -15,7 +15,8 @@ import FirebaseAuth
 import Firebase
 
 class MotionVideo: UIViewController {
-
+    
+    @IBOutlet weak var timeTxt: UILabel!
     var motionObj: Motion?
     var storageRef: StorageReference!
     var db: Firestore!
@@ -27,6 +28,7 @@ class MotionVideo: UIViewController {
         storageRef = storage.reference()
         userID = Auth.auth().currentUser!.uid
         
+        timeTxt.text = "\(motionObj!.time.dateValue())"
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -43,21 +45,27 @@ class MotionVideo: UIViewController {
     @IBAction func playVideo(_ sender: Any) {
         
         
+        // Create a reference to the file you want to download
         let starsRef = storageRef.child(motionObj!.video_url)
-        print("HHHHH")
-        print(starsRef)
-        // Fetch the download URL
-        starsRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
-
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let filename = paths.appendingPathComponent(motionObj!.video_file)
+        
+        // Create local filesystem URL
+        //  let localURL = URL(string: "path/to/image")!
+        
+        // Download to the local filesystem
+        let downloadTask = starsRef.write(toFile: filename) { url, error in
             if let error = error {
-                // Handle any errors
-                print(error)
+                // Uh-oh, an error occurred!
             } else {
-//                guard let url = URL(string: "\(data.down)") else {
-//                    return
-//                }
+                print(url)
+                print("success!!!!")
+                //            guard let url = URL(string: "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_adv_example_hevc/master.m3u8") else {
+                //                return
+                //            }
+                //ref - https://developer.apple.com/documentation/avfoundation/media_assets_playback_and_editing/creating_a_basic_video_player_ios_and_tvos
                 // Create an AVPlayer, passing it the HTTP Live Streaming URL.
-                let player = AVPlayer(url: url)
+                let player = AVPlayer(url: url!)
                 
                 // Create a new AVPlayerViewController and pass it a reference to the player.
                 let controller = AVPlayerViewController()
@@ -67,10 +75,13 @@ class MotionVideo: UIViewController {
                 self.present(controller, animated: true) {
                     player.play()
                 }
-                // Get the download URL for 'images/stars.jpg'
+                // Local file URL for "images/island.jpg" is returned
             }
         }
         
-    
+        
+        
+        
+        
     }
 }

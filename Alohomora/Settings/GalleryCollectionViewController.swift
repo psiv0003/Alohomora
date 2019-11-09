@@ -2,7 +2,7 @@
 //  GalleryCollectionViewController.swift
 //  Alohomora
 //
-//  Created by Poornima Sivakumar on 6/11/19.
+//  Created by Poornima Sivakumar on 8/11/19.
 //  Copyright © 2019 Poornima Sivakumar. All rights reserved.
 //
 
@@ -10,53 +10,45 @@ import UIKit
 import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
-import FirebaseStorage
+import Firebase
 import CodableFirebase
 
 //private let reuseIdentifier = "Cell"
 
-var tempImagesList: [ImageData] = []
-
 class GalleryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
+    var storageRef: StorageReference!
+    var customImageList: [ImageData] = []
+    var db: Firestore!
     private let reuseIdentifier = "imageCell"
     private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     private let itemsPerRow: CGFloat = 3
     
     var imageList = [UIImage]()
     var imagePathList = [String]()
-    var imageNameList: [ImageData] = []
-    
-    var db: Firestore!
-    var storageRef: StorageReference!
+    var userId = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
         let settings = FirestoreSettings()
-        
         Firestore.firestore().settings = settings
-        // [END setup]
         db = Firestore.firestore()
-        
         let storage = Storage.storage()
         storageRef = storage.reference()
-        
-      //     self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        userId = Auth.auth().currentUser!.uid
 
-        
     }
 
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-       
-        
-     
-          
-            
+         getImageData()
+    }
+    
+  
+    func getImageData(){
+         var custList: [ImageData] = []
+        //references: https://codelabs.developers.google.com/codelabs/firebase-cloud-firestore-workshop-swift/index.html?index=..%2F..index#3
         let userID = Auth.auth().currentUser!.uid
         let basicQuery = Firestore.firestore().collection("UserData").document(userID).collection("Images")
         basicQuery.getDocuments { (snapshot, error) in
@@ -66,96 +58,55 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
             }
             guard let snapshot = snapshot else { return }
             let allDocuments = snapshot.documents
-            for imageNames in allDocuments {
-                
+            for sensortDoc in allDocuments {
                 do {
-                    
-                    //decoding the json and storing it in a sensor object format
-                    let sData = try FirestoreDecoder().decode(ImageData.self, from: imageNames.data())
-                    self.imageNameList.append(sData)
-                    let fileName = sData.imgUrl
+                    let sData = try FirestoreDecoder().decode(ImageData.self, from: sensortDoc.data())
+                    custList.append(sData)
+                    print("yay-1")
+                } catch let error {
+                    print("oops")
+                    print(error)
+                }
+                
+            }
+                print(custList.count)
+            self.customImageList = custList
+            
+            if(custList.count > 0) {
+                for data in custList {
+                    let fileName = data.imgPath
                     
                     if(self.imagePathList.contains(fileName)) {
                         print("Image already loaded in. Skipping image")
                         continue
                     }
                     
-                    if let image = self.loadImageData(fileName: fileName) {
-                        self.imageList.append(image)
-                        print("im")
-                        self.imagePathList.append(fileName)
-                        self.collectionView!.reloadSections([0])
-                    } else {
-                        print("nahii")
+                    let fName = "\(fileName).jpeg"
+                    var image: UIImage?
+                    //get the user's profile image
+                    let islandRef = self.storageRef.child(fName)
+                    islandRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                        if let error = error {
+                            print(error)
+                        } else {
+                            print("yay-99")
+                            image = UIImage(data: data!)
+                            self.imageList.append(image!)
+                            self.imagePathList.append(fileName)
+                            self.collectionView!.reloadSections([0])
+                            
+                            
+                        }
+                        
                     }
-                    
-                    print(self.imageNameList)
-                } catch let error {
-                    print(error)
-                }
-                
-            }
-            
-            tempImagesList = self.imageNameList
-            //   self.tableView.reloadData()
-            
-        }
-        
-      
-    
-    }
-    
-    
-    func getFileNames(){
-    
-        let userID = Auth.auth().currentUser!.uid
-        let basicQuery = Firestore.firestore().collection("UserData").document(userID).collection("Images")
-        basicQuery.getDocuments { (snapshot, error) in
-            if let error = error {
-                print("Oh no! Got an error! \(error.localizedDescription)")
-                return
-            }
-            guard let snapshot = snapshot else { return }
-            let allDocuments = snapshot.documents
-            for imageNames in allDocuments {
-                
-                do {
-                    
-                    //decoding the json and storing it in a sensor object format
-                    let sData = try FirestoreDecoder().decode(ImageData.self, from: imageNames.data())
-                    self.imageNameList.append(sData)
-                    print(self.imageNameList)
-                } catch let error {
-                    print(error)
-                }
-                
-            }
-            
-            tempImagesList = self.imageNameList
-         //   self.tableView.reloadData()
-            
-        }
-    }
-   
-    
 
-    func loadImageData(fileName: String) -> UIImage? {
-         print("load image data")
-         var image: UIImage?
-         let userId = Auth.auth().currentUser!.uid
-         let imgUrl = "\(userId)/user/\(fileName).jpeg"
-         let islandRef = storageRef.child(imgUrl)
-         islandRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
-            if let error = error {
-                print(error)
-            } else {
-                print("success")
-                 image = UIImage(data: data!)
+                }
             }
         }
-        
-        return image
+      
     }
+    
+    
     
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -166,17 +117,15 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-      //  return 1
         return imageList.count
-
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-            as! ImageCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ImageCollectionViewCell
         
         cell.backgroundColor = UIColor.lightGray
         cell.imageView.image = imageList[indexPath.row]
+    
     
         return cell
     }
@@ -194,7 +143,6 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
         collectionViewLayout: UICollectionViewLayout, insetForSectionAt
         section: Int) -> UIEdgeInsets {
         return sectionInsets
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout
@@ -202,6 +150,8 @@ class GalleryCollectionViewController: UICollectionViewController, UICollectionV
         section: Int) -> CGFloat {
         return sectionInsets.left
     }
-
+    
+    
+    
 
 }

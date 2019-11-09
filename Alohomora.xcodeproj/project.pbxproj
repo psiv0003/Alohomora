@@ -19,13 +19,14 @@
 		6012BA382371629300677F75 /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6012BA372371629300677F75 /* ContactsTableViewCell.swift */; };
 		6012BA3B237164E100677F75 /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6012BA3A237164E100677F75 /* Contacts.swift */; };
 		6012BA3E237274E700677F75 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6012BA3D237274E700677F75 /* SettingsViewController.swift */; };
-		6012BA402372789200677F75 /* GalleryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6012BA3F2372789200677F75 /* GalleryCollectionViewController.swift */; };
-		6012BA42237278DE00677F75 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6012BA41237278DE00677F75 /* ImageCollectionViewCell.swift */; };
 		6012BA4423727A5F00677F75 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6012BA4323727A5F00677F75 /* AddPhotoViewController.swift */; };
 		6012BA4623728E2C00677F75 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6012BA4523728E2C00677F75 /* ImageData.swift */; };
 		6012BA4823729BAB00677F75 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6012BA4723729BAB00677F75 /* HomeViewController.swift */; };
 		6012BA4C2372EB0A00677F75 /* ImagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6012BA4B2372EB0A00677F75 /* ImagesTableViewController.swift */; };
 		6012BA522373052900677F75 /* ImageCellUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6012BA512373052900677F75 /* ImageCellUITableViewCell.swift */; };
+		6066AF942375166D00F4CCBA /* AddToContactVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066AF932375166D00F4CCBA /* AddToContactVCViewController.swift */; };
+		6066AF9623753EBE00F4CCBA /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066AF9523753EBE00F4CCBA /* ImageCollectionViewCell.swift */; };
+		6066AF9823753ECF00F4CCBA /* GalleryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066AF9723753ECF00F4CCBA /* GalleryCollectionViewController.swift */; };
 		6074A4BE236AB1FE007EDDDA /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6074A4BD236AB1FE007EDDDA /* TabViewController.swift */; };
 		6074A4C1236B29F7007EDDDA /* AddContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6074A4C0236B29F7007EDDDA /* AddContactsViewController.swift */; };
 		607937712368EEA600B1E49B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607937702368EEA600B1E49B /* AppDelegate.swift */; };
@@ -81,13 +82,14 @@
 		6012BA372371629300677F75 /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
 		6012BA3A237164E100677F75 /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
 		6012BA3D237274E700677F75 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		6012BA3F2372789200677F75 /* GalleryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewController.swift; sourceTree = "<group>"; };
-		6012BA41237278DE00677F75 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		6012BA4323727A5F00677F75 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		6012BA4523728E2C00677F75 /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 		6012BA4723729BAB00677F75 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		6012BA4B2372EB0A00677F75 /* ImagesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesTableViewController.swift; sourceTree = "<group>"; };
 		6012BA512373052900677F75 /* ImageCellUITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCellUITableViewCell.swift; sourceTree = "<group>"; };
+		6066AF932375166D00F4CCBA /* AddToContactVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToContactVCViewController.swift; sourceTree = "<group>"; };
+		6066AF9523753EBE00F4CCBA /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		6066AF9723753ECF00F4CCBA /* GalleryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewController.swift; sourceTree = "<group>"; };
 		6074A4BD236AB1FE007EDDDA /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		6074A4C0236B29F7007EDDDA /* AddContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactsViewController.swift; sourceTree = "<group>"; };
 		6079376D2368EEA600B1E49B /* Alohomora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alohomora.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,11 +189,11 @@
 			isa = PBXGroup;
 			children = (
 				6012BA3D237274E700677F75 /* SettingsViewController.swift */,
-				6012BA3F2372789200677F75 /* GalleryCollectionViewController.swift */,
-				6012BA41237278DE00677F75 /* ImageCollectionViewCell.swift */,
 				6012BA4323727A5F00677F75 /* AddPhotoViewController.swift */,
 				6012BA4B2372EB0A00677F75 /* ImagesTableViewController.swift */,
 				6012BA512373052900677F75 /* ImageCellUITableViewCell.swift */,
+				6066AF9523753EBE00F4CCBA /* ImageCollectionViewCell.swift */,
+				6066AF9723753ECF00F4CCBA /* GalleryCollectionViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -205,6 +207,7 @@
 				60A81B682374877900E66815 /* MotionTableViewController.swift */,
 				60A81B6A2374878D00E66815 /* MotionTableViewCell.swift */,
 				60A81B6E23748E5000E66815 /* MotionVideo.swift */,
+				6066AF932375166D00F4CCBA /* AddToContactVCViewController.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -387,6 +390,11 @@
 				TargetAttributes = {
 					6079376C2368EEA600B1E49B = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					607937832368EEA800B1E49B = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -556,6 +564,7 @@
 			files = (
 				60E3082E236949650039FEDB /* LinkDeviceViewController.swift in Sources */,
 				60A81B692374877900E66815 /* MotionTableViewController.swift in Sources */,
+				6066AF9623753EBE00F4CCBA /* ImageCollectionViewCell.swift in Sources */,
 				6012BA522373052900677F75 /* ImageCellUITableViewCell.swift in Sources */,
 				6074A4C1236B29F7007EDDDA /* AddContactsViewController.swift in Sources */,
 				6012BA382371629300677F75 /* ContactsTableViewCell.swift in Sources */,
@@ -571,14 +580,14 @@
 				6007F50C2373CA1A00482828 /* HistoryTableViewController.swift in Sources */,
 				6012BA4423727A5F00677F75 /* AddPhotoViewController.swift in Sources */,
 				607937712368EEA600B1E49B /* AppDelegate.swift in Sources */,
-				6012BA402372789200677F75 /* GalleryCollectionViewController.swift in Sources */,
 				6007F51723745F5100482828 /* DeviceTableViewCell.swift in Sources */,
 				6007F512237453A200482828 /* Device.swift in Sources */,
 				6007F51523745F3E00482828 /* DeviceTableViewController.swift in Sources */,
+				6066AF942375166D00F4CCBA /* AddToContactVCViewController.swift in Sources */,
+				6066AF9823753ECF00F4CCBA /* GalleryCollectionViewController.swift in Sources */,
 				6007F50A2373C56B00482828 /* HistoryTableViewCell.swift in Sources */,
 				60A81B6B2374878D00E66815 /* MotionTableViewCell.swift in Sources */,
 				6074A4BE236AB1FE007EDDDA /* TabViewController.swift in Sources */,
-				6012BA42237278DE00677F75 /* ImageCollectionViewCell.swift in Sources */,
 				60A81B6F23748E5000E66815 /* MotionVideo.swift in Sources */,
 				60A81B6723746EB700E66815 /* ContactDetailsViewController.swift in Sources */,
 				607937792368EEA600B1E49B /* Alohomora.xcdatamodeld in Sources */,

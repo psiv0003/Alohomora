@@ -15,7 +15,7 @@ import CodableFirebase
 import UserNotifications
 
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UNUserNotificationCenterDelegate {
 
     var db: Firestore!
     var userID = ""
@@ -24,12 +24,17 @@ class HomeViewController: UIViewController {
     var trustedList: [Contacts] = []
     var deviceList: [Device] = []
 
+    @IBOutlet weak var doorView: UIView!
+
     @IBOutlet weak var deviceTotalTxt: UILabel!
     @IBOutlet weak var deviceView: UIView!
     @IBOutlet weak var totalTrustedTxt: UILabel!
     @IBOutlet weak var trustedView: UIView!
     @IBOutlet weak var totalContactsTxt: UILabel!
     @IBOutlet weak var contactsView: UIView!
+    
+    var backgroundTask: UIBackgroundTaskIdentifier = .invalid
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,9 +51,51 @@ class HomeViewController: UIViewController {
         addShadow(view: deviceView)
         addShadow(view: trustedView)
         addShadow(view: contactsView)
+        addShadow(view: doorView)
 
+       
+
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+        
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
+
+       
         listenForChanges()
         // Do any additional setup after loading the view.
+    }
+    
+    func registerBackgroundTask() {
+        backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
+            self?.endBackgroundTask()
+        }
+        assert(backgroundTask != .invalid)
+    }
+    
+    func endBackgroundTask() {
+        print("Background task ended.")
+        UIApplication.shared.endBackgroundTask(backgroundTask)
+        backgroundTask = .invalid
+    }
+    
+    @objc func appMovedToBackground() {
+        print("App moved to background!")
+        db.collection("pushButton").whereField("userId", isEqualTo: userID)
+            .addSnapshotListener { querySnapshot, error in
+                guard let snapshot = querySnapshot else {
+                    print("Error fetching snapshots: \(error!)")
+                    return
+                }
+                snapshot.documentChanges.forEach { diff in
+                    if (diff.type == .added) {
+                        print("New city: \(diff.document.data())")
+                        //  self.MotionNotification(data: "abcs")
+                        self.sendNotification()
+                    }
+                    
+                }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,25 +104,53 @@ class HomeViewController: UIViewController {
         getDeviceTotal()
     }
 
-    
-    
+    @IBAction func openDoor(_ sender: Any) {
+        self.db
+            .collection("UserData").document(userID)
+            .collection("door").document()
+            .setData([
+                "time": FieldValue.serverTimestamp(),
+                "allow": 1
+                
+                
+            ]) { err in
+                if err != nil {
+                    let alertController = UIAlertController(title: "Error", message: "Oops! Looks like something went wrong. Please try again or contact customer support at help@alohomora.com", preferredStyle: .alert)
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    
+                    alertController.addAction(defaultAction)
+                    self.present(alertController, animated: true, completion: nil)
+                } else {
+                   // self.navigationController?.popViewController(animated: true)
+                    
+                    let alertController = UIAlertController(title: "Success", message: "The door was opened!", preferredStyle: .alert)
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    
+                    alertController.addAction(defaultAction)
+                    self.present(alertController, animated: true, completion: nil)
+                    //self.performSegue(withIdentifier: "linkToHomeSegue", sender: self)
+                    print("Document successfully written!")
+                }
+        }
+        
+    }
     func listenForChanges() {
         
         let userID = Auth.auth().currentUser!.uid
-        db.collection("motionSensor").whereField("userId", isEqualTo: userID)
-            .addSnapshotListener { querySnapshot, error in
-                guard let snapshot = querySnapshot else {
-                    print("Error fetching snapshots: \(error!)")
-                    return
-                }
-                snapshot.documentChanges.forEach { diff in
-                    if (diff.type == .added) {
-                      //  print("New city: \(diff.document.data())")
-                        self.MotionNotification(data: "abcs")
-                    }
-                
-                }
-        }
+//        db.collection("motionSensor").whereField("userId", isEqualTo: userID)
+//            .addSnapshotListener { querySnapshot, error in
+//                guard let snapshot = querySnapshot else {
+//                    print("Error fetching snapshots: \(error!)")
+//                    return
+//                }
+//                snapshot.documentChanges.forEach { diff in
+//                    if (diff.type == .added) {
+//                      //  print("New city: \(diff.document.data())")
+//                        self.MotionNotification(data: "abcs")
+//                    }
+//
+//                }
+//        }
 
         
         db.collection("pushButton").whereField("userId", isEqualTo: userID)
@@ -86,8 +161,9 @@ class HomeViewController: UIViewController {
                 }
                 snapshot.documentChanges.forEach { diff in
                     if (diff.type == .added) {
-                      //  print("New city: \(diff.document.data())")
-                        self.MotionNotification(data: "abcs")
+                       print("New city: \(diff.document.data())")
+                      //  self.MotionNotification(data: "abcs")
+                        self.sendNotification()
                     }
                     
                 }
@@ -95,6 +171,41 @@ class HomeViewController: UIViewController {
     }
   
 
+    func sendNotification(){
+        let userNotificationCenter = UNUserNotificationCenter.current()
+
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = "Test"
+        notificationContent.body = "Test body"
+        notificationContent.badge = NSNumber(value: 3)
+        
+        if let url = Bundle.main.url(forResource: "dune",
+                                     withExtension: "png") {
+            if let attachment = try? UNNotificationAttachment(identifier: "dune",
+                                                              url: url,
+                                                              options: nil) {
+                notificationContent.attachments = [attachment]
+            }
+        }
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1,
+                                                        repeats: false)
+        let request = UNNotificationRequest(identifier: "testNotification",
+                                            content: notificationContent,
+                                            trigger: trigger)
+        
+        
+        userNotificationCenter.add(request) { (error) in
+            if let error = error {
+                print("Notification Error: ", error)
+            } else{
+                print("whosoooo")
+            }
+        }
+    }
+    
+
+    
     func MotionNotification(data: String){
         
         
@@ -108,13 +219,14 @@ class HomeViewController: UIViewController {
         //  let attachment = try! UNNotificationAttachment(identifier: imageName, url: imageURL, options: .none)
         
         //  content.attachments = [attachment]
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         let request = UNNotificationRequest(identifier: "notification.id.01", content: content, trigger: trigger)
         
         // 4
         
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
+
     
     
     func getData(){
@@ -155,6 +267,13 @@ class HomeViewController: UIViewController {
             
         }
         
+    }
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge, .sound])
     }
     
     func getDeviceTotal(){
@@ -199,3 +318,4 @@ class HomeViewController: UIViewController {
 
     }
 }
+

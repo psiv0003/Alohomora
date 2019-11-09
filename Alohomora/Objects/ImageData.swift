@@ -12,10 +12,12 @@ import CodableFirebase
 
 class ImageData: Codable {
     var imgUrl: String
- 
+    var imgPath: String
     
-    init(imgUrl: String) {
-       
+    
+    init(imgUrl: String, imgPath: String) {
+        
         self.imgUrl = imgUrl
+        self.imgPath = imgPath
     }
 }

@@ -86,8 +86,6 @@ class MotionTableViewController: UITableViewController {
         return motionDataList.count
     }
     
-
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->
         UITableViewCell {
             
@@ -197,7 +195,6 @@ class MotionTableViewController: UITableViewController {
                 
             }
             
-           // tempButtonData = self.motionDataList
             self.tableView.reloadData()
             
         }
@@ -226,10 +223,10 @@ class MotionTableViewController: UITableViewController {
         
         
         
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.year, .month, .day], from: Date())
-        let start = calendar.date(from: components)!
+       
         
+        let actualStart = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+
         let end = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: Date())!
         
         print(end)
@@ -237,7 +234,7 @@ class MotionTableViewController: UITableViewController {
         let basicQuery = Firestore.firestore().collection("motionSensor")
             .whereField("userId", isEqualTo: userID)
             .whereField("time", isGreaterThan: end)
-            .whereField("time", isLessThan: start)
+            .whereField("time", isLessThan: actualStart)
             .order(by: "time", descending: true)
         basicQuery.getDocuments { (snapshot, error) in
             if let error = error {
@@ -269,10 +266,6 @@ class MotionTableViewController: UITableViewController {
     func loadUserDataAll(){
         //getting data from firebase and ordering it by time
         //references: https://codelabs.developers.google.com/codelabs/firebase-cloud-firestore-workshop-swift/index.html?index=..%2F..index#3
-        
-        
-        
-        
         print("all")
         let basicQuery = Firestore.firestore().collection("motionSensor")
             .whereField("userId", isEqualTo: userID)
@@ -297,7 +290,6 @@ class MotionTableViewController: UITableViewController {
                 
             }
             
-           // tempButtonData = self.motionDataList
             self.tableView.reloadData()
             
         }

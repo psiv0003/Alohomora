@@ -9,7 +9,9 @@
 import UIKit
 
 class HistoryTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var addPerson: UIButton!
+    
     @IBOutlet weak var personImage: UIImageView!
     @IBOutlet weak var timeTxt: UILabel!
     @IBOutlet weak var nameTxt: UILabel!
