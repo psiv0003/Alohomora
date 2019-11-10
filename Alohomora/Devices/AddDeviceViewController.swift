@@ -15,6 +15,7 @@ class AddDeviceViewController: UIViewController {
 
      var db: Firestore!
     
+     var isLinked = -99
     @IBOutlet weak var locationTxt: UITextField!
     @IBOutlet weak var deviceIdTxt: UITextField!
     override func viewDidLoad() {
@@ -52,6 +53,7 @@ class AddDeviceViewController: UIViewController {
                     //the id entered by the user exists in teh "Devices" collection
                     
                     if( self.deviceIdTxt.text == document.documentID){
+                        self.isLinked = 100
                         print("same same " + document.documentID)
                         let userID = Auth.auth().currentUser!.uid
                         
@@ -80,14 +82,16 @@ class AddDeviceViewController: UIViewController {
                         }
                         
                         
-                    }else {   
-                        
-                        let alertController = UIAlertController(title: "Error", message: "Oops! Looks like that ID does not exsist. Please contact customer support at help@alohomora.com", preferredStyle: .alert)
-                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                        
-                        alertController.addAction(defaultAction)
-                        self.present(alertController, animated: true, completion: nil)
                     }
+                }
+                
+                if( self.isLinked == -99){
+                    
+                    let alertController = UIAlertController(title: "Error", message: "Oops! Looks like that ID does not exsist. Please contact customer support at help@alohomora.com", preferredStyle: .alert)
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    
+                    alertController.addAction(defaultAction)
+                    self.present(alertController, animated: true, completion: nil)
                 }
             }
         }

@@ -14,6 +14,7 @@ import FirebaseAuth
 class LinkDeviceViewController: UIViewController {
 
     var db: Firestore!
+    var linked = -99
 
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var deviceId: UITextField!
@@ -36,10 +37,10 @@ class LinkDeviceViewController: UIViewController {
             } else {
                 for document in querySnapshot!.documents {
                    // print("\(document.documentID) => \(document.data())")
-                    print(document.documentID)
                     //the id entered by the user exists in teh "Devices" collection
                     
                     if( self.deviceId.text == document.documentID){
+                        self.linked = 100
                         print("same same " + document.documentID)
                         let userID = Auth.auth().currentUser!.uid
 
@@ -61,21 +62,25 @@ class LinkDeviceViewController: UIViewController {
                                 self.present(alertController, animated: true, completion: nil)
                             } else {
                                 self.updateDevicesTable(userId: userID)
-                                 self.performSegue(withIdentifier: "linkToHomeSegue", sender: self)
+                                self.performSegue(withIdentifier: "linkToHomeSegue", sender: self)
                                 print("Document successfully written!")
                             }
                         }
 
 
-                    }else {
-                        
-                        let alertController = UIAlertController(title: "Error", message: "Oops! Looks like that ID does not exsist. Please contact customer support at help@alohomora.com", preferredStyle: .alert)
-                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                        
-                        alertController.addAction(defaultAction)
-                        self.present(alertController, animated: true, completion: nil)
                     }
+                   
                 }
+                
+                if( self.linked == -99){
+                    
+                    let alertController = UIAlertController(title: "Error", message: "Oops! Looks like that ID does not exsist. Please contact customer support at help@alohomora.com", preferredStyle: .alert)
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    
+                    alertController.addAction(defaultAction)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+                
             }
         }
     }

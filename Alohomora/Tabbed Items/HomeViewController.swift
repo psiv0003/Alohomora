@@ -33,7 +33,6 @@ class HomeViewController: UIViewController, UNUserNotificationCenterDelegate {
     @IBOutlet weak var totalContactsTxt: UILabel!
     @IBOutlet weak var contactsView: UIView!
     
-    var backgroundTask: UIBackgroundTaskIdentifier = .invalid
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,29 +54,14 @@ class HomeViewController: UIViewController, UNUserNotificationCenterDelegate {
 
        
 
-        let center = UNUserNotificationCenter.current()
-        center.delegate = self
-        
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
+       
 
        
         listenForChanges()
         // Do any additional setup after loading the view.
     }
     
-    func registerBackgroundTask() {
-        backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
-            self?.endBackgroundTask()
-        }
-        assert(backgroundTask != .invalid)
-    }
     
-    func endBackgroundTask() {
-        print("Background task ended.")
-        UIApplication.shared.endBackgroundTask(backgroundTask)
-        backgroundTask = .invalid
-    }
     
     @objc func appMovedToBackground() {
         print("App moved to background!")

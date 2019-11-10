@@ -86,23 +86,24 @@ class DeviceTableViewController: UITableViewController {
             deviceCell.locationTxt.text = device.location
             deviceCell.deviceIdTxt.text = device.deviceId
             
-            
+
+
             return deviceCell
     }
     
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        
-        return false
-    }
+//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+//
+//        return false
+//    }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle:
-        UITableViewCell.EditingStyle,
-                            forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete  {
-            self.deviceList.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-    }
+//    override func tableView(_ tableView: UITableView, commit editingStyle:
+//        UITableViewCell.EditingStyle,
+//                            forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete  {
+//            self.deviceList.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//        }
+//    }
     
     func loadUserData(){
         print("DATAaaaa")

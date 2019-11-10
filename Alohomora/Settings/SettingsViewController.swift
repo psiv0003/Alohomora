@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+
 
 class SettingsViewController: UIViewController {
 
@@ -20,6 +22,7 @@ class SettingsViewController: UIViewController {
     }
     
     
+  
     func viewSet(){
         photoGalleryView.layer.masksToBounds = false
         photoGalleryView.clipsToBounds = true
@@ -41,5 +44,14 @@ class SettingsViewController: UIViewController {
     @IBAction func photoGalleryButton(_ sender: Any) {
     }
     
+    @IBAction func logout(_ sender: Any) {
+        
+        try! Auth.auth().signOut()
+        
+        if let storyboard = self.storyboard {
+            let vc = storyboard.instantiateViewController(withIdentifier: "loginView") as! LoginViewController
+            self.present(vc, animated: false, completion: nil)
+        }
+    }
 
 }
