@@ -113,11 +113,17 @@ class HistoryTableViewController: UITableViewController {
             buttonCell.layer.cornerRadius = 10
             
             if(button.name == "No Face"){
-                 buttonCell.nameTxt.text = "Unknown"
+                 buttonCell.nameTxt.text = "No Face Detected"
+                
                
             } else {
                  buttonCell.nameTxt.text = button.name
-                 buttonCell.addPerson.isHidden = true
+               
+            }
+            if(button.name == "No Face" || button.name == "Unknown"){
+                  buttonCell.addPerson.isHidden = false
+            } else{
+                  buttonCell.addPerson.isHidden = true
             }
            
             
@@ -131,7 +137,7 @@ class HistoryTableViewController: UITableViewController {
             buttonCell.timeTxt.text = "\(fTime)"
             
             let email = Auth.auth().currentUser!.uid
-            let imgUrl = "\(button.image_url).jpg"
+            let imgUrl = "\(button.image_url)"
             //get the user's profile image
             let islandRef = storageRef.child(imgUrl)
             islandRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
@@ -164,7 +170,7 @@ class HistoryTableViewController: UITableViewController {
         
         tableView.deselectRow(at: indexPath, animated: true)
         var selectedContact = buttonDataList[indexPath.row]
-        if( selectedContact.name == "No Face"){
+        if( selectedContact.name == "No Face" || selectedContact.name == "Unknown"){
             performSegue(withIdentifier: "addToContactSegue", sender: buttonDataList[indexPath.row])
 
         }
@@ -191,7 +197,10 @@ class HistoryTableViewController: UITableViewController {
         let end = calendar.date(byAdding: .day, value: 1, to: start)!
         
         
-        let basicQuery = Firestore.firestore().collection("pushButton")
+        let basicQuery = Firestore.firestore()
+            .collection("DeviceData")
+            .document(userID)
+            .collection("pushData")
             .whereField("userId", isEqualTo: userID)
             .whereField("time", isGreaterThan: start)
             .whereField("time", isLessThan: end)
@@ -238,7 +247,10 @@ class HistoryTableViewController: UITableViewController {
 
         print(end)
         
-        let basicQuery = Firestore.firestore().collection("pushButton")
+        let basicQuery = Firestore.firestore()
+            .collection("DeviceData")
+            .document(userID)
+            .collection("pushData")
             .whereField("userId", isEqualTo: userID)
             .whereField("time", isGreaterThan: end)
             .whereField("time", isLessThan: actualStart)
@@ -278,7 +290,10 @@ class HistoryTableViewController: UITableViewController {
         
       
         
-        let basicQuery = Firestore.firestore().collection("pushButton")
+        let basicQuery = Firestore.firestore()
+            .collection("DeviceData")
+            .document(userID)
+            .collection("pushData")
             .whereField("userId", isEqualTo: userID)
             .order(by: "time", descending: true)
         basicQuery.getDocuments { (snapshot, error) in

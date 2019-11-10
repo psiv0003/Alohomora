@@ -169,7 +169,10 @@ class MotionTableViewController: UITableViewController {
         let end = calendar.date(byAdding: .day, value: 1, to: start)!
         
         
-        let basicQuery = Firestore.firestore().collection("motionSensor")
+        let basicQuery = Firestore.firestore()
+            .collection("DeviceData")
+            .document(userID)
+            .collection("motionData")
             .whereField("userId", isEqualTo: userID)
             .whereField("time", isGreaterThan: start)
             .whereField("time", isLessThan: end)
@@ -231,7 +234,10 @@ class MotionTableViewController: UITableViewController {
         
         print(end)
         
-        let basicQuery = Firestore.firestore().collection("motionSensor")
+        let basicQuery = Firestore.firestore()
+            .collection("DeviceData")
+            .document(userID)
+            .collection("motionData")
             .whereField("userId", isEqualTo: userID)
             .whereField("time", isGreaterThan: end)
             .whereField("time", isLessThan: actualStart)
@@ -267,7 +273,10 @@ class MotionTableViewController: UITableViewController {
         //getting data from firebase and ordering it by time
         //references: https://codelabs.developers.google.com/codelabs/firebase-cloud-firestore-workshop-swift/index.html?index=..%2F..index#3
         print("all")
-        let basicQuery = Firestore.firestore().collection("motionSensor")
+        let basicQuery = Firestore.firestore()
+            .collection("DeviceData")
+            .document(userID)
+            .collection("motionData")
             .whereField("userId", isEqualTo: userID)
             .order(by: "time", descending: true)
         basicQuery.getDocuments { (snapshot, error) in

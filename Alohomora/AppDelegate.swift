@@ -11,22 +11,23 @@ import CoreData
 import Firebase
 import UserNotifications
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     var notificationCenter: UNUserNotificationCenter!
-    
+    var db: Firestore!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-        let db = Firestore.firestore()
+        db = Firestore.firestore()
         self.notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.delegate = self
         
         //user notifications
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) {
+          UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]){
             (granted, error) in
             if granted {
                 print("yes")
@@ -34,26 +35,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("No")
             }
         }
-        let options: UNAuthorizationOptions = [.alert, .sound]
+      
         
-        // request permission
-        notificationCenter.requestAuthorization(options: options) { (granted, error) in
-            if !granted {
-                print("Permission not granted")
-            }
-        }
-        
-        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
 
+        UNUserNotificationCenter.current().delegate = self
         
         return true
     }
+
     
-    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        if let viewController = window?.rootViewController as? HomeViewController {
-            viewController.listenForChanges()
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        if response.actionIdentifier == UNNotificationDismissActionIdentifier {
+            print ("Message Closed")
+        }
+        else if response.actionIdentifier == UNNotificationDefaultActionIdentifier {
+            print ("App is Open")
+        }
+        
+        // Else handle any custom actions. . .
+        completionHandler()
+    }
+
+    func application(
+        _ application: UIApplication,
+        performFetchWithCompletionHandler
+        completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        //1
+        print("in bg--1")
+        if let tabBarController = window?.rootViewController as? UITabBarController,
+            let viewControllers = tabBarController.viewControllers {
+            
+            //2
+            for viewController in viewControllers {
+                if let fetchViewController = viewController as? HomeViewController {
+                    //3
+                    fetchViewController.listenForChanges()
+              
+                }
+            }
         }
     }
+    
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -61,9 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        if let viewController = window?.rootViewController as? HomeViewController {
-            viewController.listenForChanges()
-        }
+     
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
@@ -127,74 +150,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
   
-    
-    //    func notification(forRegion region: CLRegion){
-    //
-    //
-    //        let content = UNMutableNotificationContent()
-    //        content.title = "Melbourne Sights"
-    //        content.subtitle = "Sight Alert!"
-    //        content.body = "Hey Looks like you just left a historical sight!"
-    //        let imageName = "logo"
-    //        // guard let imageURL = Bundle.main.url(forResource: imageName, withExtension: "png") else { return }
-    //
-    //        //  let attachment = try! UNNotificationAttachment(identifier: imageName, url: imageURL, options: .none)
-    //
-    //        //  content.attachments = [attachment]
-    //        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
-    //        let request = UNNotificationRequest(identifier: "notification.id.01", content: content, trigger: trigger)
-    //
-    //        // 4
-    //
-    //        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-    //    }
+
     
 }
-//extension AppDelegate: CLLocationManagerDelegate {
-//    // called when user Exits a monitored region
-//    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-//        if region is CLCircularRegion {
-//            let content = UNMutableNotificationContent()
-//            content.title = "Melbourne Sights"
-//            content.subtitle = "Sight Alert!"
-//            content.body = "Hey Looks like you just left a historical sight!"
-//            let imageName = "logo"
-//            
-//            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
-//            let request = UNNotificationRequest(identifier: "notification.id.01", content: content, trigger: trigger)
-//            
-//            // 4
-//            
-//            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-//            // self.notification(forRegion: region)
-//        }
-//    }
-//    
-//    // called when user Enters a monitored region
-//    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-//        if region is CLCircularRegion {
-//            // Do what you want if this information
-//            let content = UNMutableNotificationContent()
-//            content.title = "Melbourne Sights"
-//            content.subtitle = "Sight Alert!"
-//            content.body = "Hey Looks like you have entered a place of interest!"
-//            let imageName = "logo"
-//            
-//            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
-//            let request = UNNotificationRequest(identifier: "notification.id.01", content: content, trigger: trigger)
-//            
-//            // 4
-//            
-//            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-//        }
-//    }
-//}
+
 
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        // when app is onpen and in foregroud
-        completionHandler(.alert)
-    }
+//    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+//        // when app is onpen and in foregroud
+//        completionHandler(.alert)
+//    }
 }

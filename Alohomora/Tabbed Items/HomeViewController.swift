@@ -13,6 +13,7 @@ import FirebaseAuth
 import FirebaseStorage
 import CodableFirebase
 import UserNotifications
+import CodableFirebase
 
 
 class HomeViewController: UIViewController, UNUserNotificationCenterDelegate {
@@ -61,26 +62,7 @@ class HomeViewController: UIViewController, UNUserNotificationCenterDelegate {
         // Do any additional setup after loading the view.
     }
     
-    
-    
-    @objc func appMovedToBackground() {
-        print("App moved to background!")
-        db.collection("pushButton").whereField("userId", isEqualTo: userID)
-            .addSnapshotListener { querySnapshot, error in
-                guard let snapshot = querySnapshot else {
-                    print("Error fetching snapshots: \(error!)")
-                    return
-                }
-                snapshot.documentChanges.forEach { diff in
-                    if (diff.type == .added) {
-                        print("New city: \(diff.document.data())")
-                        //  self.MotionNotification(data: "abcs")
-                        self.sendNotification()
-                    }
-                    
-                }
-        }
-    }
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -121,23 +103,11 @@ class HomeViewController: UIViewController, UNUserNotificationCenterDelegate {
     func listenForChanges() {
         
         let userID = Auth.auth().currentUser!.uid
-//        db.collection("motionSensor").whereField("userId", isEqualTo: userID)
-//            .addSnapshotListener { querySnapshot, error in
-//                guard let snapshot = querySnapshot else {
-//                    print("Error fetching snapshots: \(error!)")
-//                    return
-//                }
-//                snapshot.documentChanges.forEach { diff in
-//                    if (diff.type == .added) {
-//                      //  print("New city: \(diff.document.data())")
-//                        self.MotionNotification(data: "abcs")
-//                    }
-//
-//                }
-//        }
 
-        
-        db.collection("pushButton").whereField("userId", isEqualTo: userID)
+        db.collection("DeviceData")
+            .document(userID)
+            .collection("motionData")
+            .whereField("userId", isEqualTo: userID)
             .addSnapshotListener { querySnapshot, error in
                 guard let snapshot = querySnapshot else {
                     print("Error fetching snapshots: \(error!)")
@@ -145,71 +115,113 @@ class HomeViewController: UIViewController, UNUserNotificationCenterDelegate {
                 }
                 snapshot.documentChanges.forEach { diff in
                     if (diff.type == .added) {
-                       print("New city: \(diff.document.data())")
-                      //  self.MotionNotification(data: "abcs")
-                        self.sendNotification()
+                        
+                        do {
+                            print("detected---")
+                            
+                            let sData = try FirestoreDecoder().decode(Motion.self, from: diff.document.data())
+                            self.updateNotificationsMotions(motionData: sData)
+                            
+                        } catch let error {
+                            print(error)
+                        }
+                        
+                        
+                    }
+                    
+                }
+        }
+        
+
+
+        db.collection("DeviceData")
+            .document(userID)
+            .collection("pushData")
+            .whereField("userId", isEqualTo: userID)
+            .addSnapshotListener { querySnapshot, error in
+                guard let snapshot = querySnapshot else {
+                    print("Error fetching snapshots: \(error!)")
+                    return
+                }
+                snapshot.documentChanges.forEach { diff in
+                    if (diff.type == .added) {
+
+                     
+                        do {
+                            
+                        let sData = try FirestoreDecoder().decode(ButtonData.self, from: diff.document.data())
+                            self.updateNotifications(buttonData: sData)
+
+                        } catch let error {
+                            print(error)
+                        }
+                  
+                        
                     }
                     
                 }
         }
     }
   
-
-    func sendNotification(){
-        let userNotificationCenter = UNUserNotificationCenter.current()
-
-        let notificationContent = UNMutableNotificationContent()
-        notificationContent.title = "Test"
-        notificationContent.body = "Test body"
-        notificationContent.badge = NSNumber(value: 3)
+    func updateNotificationsMotions(motionData: Motion){
+        let center =  UNUserNotificationCenter.current()
         
-        if let url = Bundle.main.url(forResource: "dune",
-                                     withExtension: "png") {
-            if let attachment = try? UNNotificationAttachment(identifier: "dune",
-                                                              url: url,
-                                                              options: nil) {
-                notificationContent.attachments = [attachment]
-            }
-        }
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1,
-                                                        repeats: false)
-        let request = UNNotificationRequest(identifier: "testNotification",
-                                            content: notificationContent,
-                                            trigger: trigger)
-        
-        
-        userNotificationCenter.add(request) { (error) in
-            if let error = error {
-                print("Notification Error: ", error)
-            } else{
-                print("whosoooo")
-            }
-        }
-    }
-    
-
-    
-    func MotionNotification(data: String){
-        
-        
+        //create the content for the notification
         let content = UNMutableNotificationContent()
         content.title = "Movement Alert"
-//        content.subtitle = "Sight Alert!"
-        content.body = "Hey there! Motion was just detected outside your door. Check to see who it is!"
-       // let imageName = "logo"
-        // guard let imageURL = Bundle.main.url(forResource: imageName, withExtension: "png") else { return }
+        content.subtitle = "Motion Detected!"
         
-        //  let attachment = try! UNNotificationAttachment(identifier: imageName, url: imageURL, options: .none)
         
-        //  content.attachments = [attachment]
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-        let request = UNNotificationRequest(identifier: "notification.id.01", content: content, trigger: trigger)
+      
         
-        // 4
+        content.body = "Hey there! Looks like someone is outside your house!"
+        content.sound = UNNotificationSound.default
         
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval:2.0, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: "ContentIdentifier", content: content, trigger: trigger)
+        
+        center.add(request) { (error) in
+            if error != nil {
+                print("error \(String(describing: error))")
+            }
+        }
     }
+    
+    
+    
+    func updateNotifications(buttonData: ButtonData){
+        let center =  UNUserNotificationCenter.current()
+        
+        //create the content for the notification
+        let content = UNMutableNotificationContent()
+        content.title = "Movement Alert"
+       
+        
+        if(buttonData.name == "Unknown" || buttonData.name == "No Face"){
+             content.body = "Hey there! Looks like someone just rang the bell!"
+        } else {
+             content.body = "Hey there! Looks like \(buttonData.name) just rang the bell!"
+        }
+       
+        content.sound = UNNotificationSound.default
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval:2.0, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: "ContentIdentifier", content: content, trigger: trigger)
+        
+        center.add(request) { (error) in
+            if error != nil {
+                print("error \(String(describing: error))")
+            }
+        }
+    }
+  
+
+    
+
+    
+
 
     
     
@@ -252,13 +264,7 @@ class HomeViewController: UIViewController, UNUserNotificationCenterDelegate {
         }
         
     }
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        completionHandler()
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert, .badge, .sound])
-    }
+
     
     func getDeviceTotal(){
         deviceList.removeAll()

@@ -141,6 +141,17 @@ class ContactsTableViewController: UITableViewController {
                 }
             }
 
+            let desertRef = storageRef.child(contact.imgPath)
+            
+            // Delete the file
+            desertRef.delete { error in
+                if let error = error {
+                     print("Error removing document: \(error)")
+                } else {
+                    print("Document successfully removed!")
+                    
+                }
+            }
             
             self.contactList.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
